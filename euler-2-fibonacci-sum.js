@@ -14,13 +14,13 @@ Run in Scratchapd in Firefox (Shift+ F4)
 // Solution 1 - brute force
 var sum = 0, last = 1, current = 1, next, iterations = 0;
 while ( current < 4000000 ) {
-	if ( current % 2 === 0 ) {
+    if ( current % 2 === 0 ) {
         sum += current;
-	}
-	next = current + last;
-	last = current;
-	current = next;
-	iterations += 1;
+    }
+    next = current + last;
+    last = current;
+    current = next;
+    iterations += 1;
 }
 
 alert("The sum is " + sum + ". Iterations: " + iterations);
@@ -28,7 +28,7 @@ alert("The sum is " + sum + ". Iterations: " + iterations);
 //Solution 1 - brute force + fancy trick
 var sum = 0, last = 1, current = 1, iterations = 0;
 while ( current < 4000000 ) {
-	if ( current % 2 === 0 ) {
+    if ( current % 2 === 0 ) {
         sum += current;
     }
     // Fancy trick in ES 5 - "destructuring assignment"
