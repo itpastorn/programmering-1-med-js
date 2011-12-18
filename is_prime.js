@@ -13,7 +13,7 @@ function isPrime(num) {
     if (num % 2 === 0) {
         is_prime = false;
     }
-    for ( i = 3; i < Math.sqrt(num); i += 2) {
+    for ( var i = 3; i < Math.sqrt(num); i += 2) {
         if (num % i === 0) {
             is_prime = false;
         }
