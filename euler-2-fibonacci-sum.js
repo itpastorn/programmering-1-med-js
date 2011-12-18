@@ -61,3 +61,41 @@ while ( current < 4000000 ) {
 
 alert("The sum is " + sum + ". Iterations: " + iterations);
 
+// So far we have only improved the ALGORITHM, now let's look at the ARCHITECTURE
+// Lets de-couple the Fibonacci-generation from the usage
+// That means we can re-use it!
+// TODO: Protect these properties from outside tampering
+var fibgen = {
+    last: 1,
+    current: 1
+};
+fibgen.getCurrent = function() {
+    return fibgen.current;
+};
+fibgen.step = function (n) {
+    // Steps forward n times
+    if ( typeof n === "undefined") {
+        n = 1;
+    } else if ( typeof n !== "number" || n !== Math.abs(Math.floor(n)) ) {
+        throw Error("Argument n to fibgen.step() must be a positive integer or undefined");
+	}
+	for (var i = 0; i < n; i += 1) {
+        [fibgen.last, fibgen.current] = [fibgen.current, fibgen.current + fibgen.last];
+	}
+	return fibgen.current;
+};
+fibgen.reset = function() {
+    fibgen.last = 1;
+    fibgen.current = 1;
+}
+
+// Using the generator
+var sum = 0, iterations = 0;
+fibgen.step(); // Start at 2
+do {
+    sum += fibgen.getCurrent();
+    iterations += 1;
+} while  ( fibgen.step(3) < 4000000 );
+
+alert("The sum is " + sum + ". Iterations: " + iterations);
+
