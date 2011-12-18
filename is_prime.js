@@ -3,14 +3,17 @@
 
 // Move between checked in versions to see how the function evolves
 
-// Iteration 1 - very inefficient
-// Tries to divide by every number, but halts at the square root
+// Iteration 2 - inefficient
+// Removed checks at 4, 6, 8, 10, etc
 function isPrime(num) {
     if (num !== Math.floor(num) || num < 1) {
         throw new Error("Argument num must be a positive integer");
     }
     var is_prime = true;
-    for ( var i = 2; i < Math.sqrt(num); i += 1) {
+    if (num % 2 === 0) {
+        is_prime = false;
+    }
+    for ( i = 3; i < Math.sqrt(num); i += 2) {
         if (num % i === 0) {
             is_prime = false;
         }
