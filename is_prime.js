@@ -27,7 +27,7 @@ function isPrime(num) {
 
 // Explaining this version
 /*
- * For 50 % of all numbers - the even ones - it will be O(1) 
+ * For 50 % of all numbers - the even ones - it will be O(1)
  * For most numbers it will break quickly, on 3, 5, 7, etc
  * When reaching Math.sqrt(num) it will stop, since continuing would
  * only mean doing redundant double checks
