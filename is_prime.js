@@ -4,8 +4,9 @@
 // Move between checked in versions to see how the function evolves
 
 
-// Iteration 3 - barely usable
-// Reduces redundant iterations
+// Iteration 4 - usable
+// Caching Math.sqrt()
+// And converts to integer to help the JIT compilers
 function isPrime(num) {
     if (num !== Math.floor(num) || num < 1) {
         throw new Error("Argument num must be a positive integer");
@@ -14,7 +15,8 @@ function isPrime(num) {
         return false;
     }
     // Does not run if divisible by 2
-    for ( var i = 3; i < Math.sqrt(num); i += 2) {
+    var stop = Math.floor(Math.sqrt(num)); // cache
+    for ( var i = 3; i < stop; i += 2) {
         if (num % i === 0) {
             return false;
             // implicit break
