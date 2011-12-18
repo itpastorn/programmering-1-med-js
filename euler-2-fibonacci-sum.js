@@ -78,11 +78,11 @@ fibgen.step = function (n) {
         n = 1;
     } else if ( typeof n !== "number" || n !== Math.abs(Math.floor(n)) ) {
         throw Error("Argument n to fibgen.step() must be a positive integer or undefined");
-	}
-	for (var i = 0; i < n; i += 1) {
+    }
+    for (var i = 0; i < n; i += 1) {
         [fibgen.last, fibgen.current] = [fibgen.current, fibgen.current + fibgen.last];
-	}
-	return fibgen.current;
+    }
+    return fibgen.current;
 };
 fibgen.reset = function() {
     fibgen.last = 1;
