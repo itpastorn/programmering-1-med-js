@@ -89,7 +89,7 @@ fibgen.step = function (n) {
 fibgen.reset = function() {
     fibgen.last = 1;
     fibgen.current = 1;
-}
+};
 
 // Using the generator
 var sum = 0, iterations = 0;
