@@ -63,11 +63,12 @@ alert(candidate + " is the product of " + f1 + " and " + f2 +
 // If so we can start at 990 (smallest number below 1000) that is divisible by 11) and step down by 11
 // for (var i = 990; i > 99 && candidate < i * 999; i -= 11) {
 // This solves the problem in 388 iterations
+// Bonus check needed: There must be a solution so high that the product won't be an odd number length product
 
-// This code would imply that it is
+// This code would imply that it is possible to assume that all palindromic even numbered numbers are divisible by 11
 proven = true;
 for ( var i = 10; i < 10000000; i++ ) {
-    var p = i + "" + String(i).split("").reverse("").join("");
+    var p = i + "" + String(i).split("").reverse("").join(""); // Creates palindrome
     p = parseInt(p, 10);
     if ( p % 11 !== 0 ) {
         proven = false;
