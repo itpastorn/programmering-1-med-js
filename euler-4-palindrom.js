@@ -66,9 +66,9 @@ alert(candidate + " is the product of " + f1 + " and " + f2 +
 // Bonus check needed: There must be a solution so high that the product won't be an odd number length product
 
 // This code would imply that it is possible to assume that all palindromic even numbered numbers are divisible by 11
-proven = true;
+var proven = true;
 for ( var i = 10; i < 10000000; i++ ) {
-    var p = i + "" + String(i).split("").reverse("").join(""); // Creates palindrome
+    var p = i + String(i).split("").reverse("").join(""); // Creates palindrome
     p = parseInt(p, 10);
     if ( p % 11 !== 0 ) {
         proven = false;
