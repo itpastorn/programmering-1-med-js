@@ -18,6 +18,12 @@ function isPalindrome(string) {
     return true;
 }
 
+// Alternative check
+// TODO Measure if it is more effective
+function isPalindrome2(string) {
+    return string.split("").reverse("").join("") === string;
+}
+
 // alert(isPalindrome(String(2123458543212)));
 
 var f1 = 0, f2 = 0;
@@ -46,9 +52,27 @@ alert(candidate + " is the product of " + f1 + " and " + f2 +
 // Without 2nd condition
 // 906609 is the product of 913 and 993 - Iterations: 405450
 // With 2nd condition
-// 906609 is the product of 913 and 993 - Iterations: 4371
+// 906609 is the product of 913 and 993 - Iterations: 4371 or 4278??? Que?
 
 // Trying bigger numbers...
 // 999000000999 is the product of 999001 and 999999 - Iterations: 499500
 // Practical limit at 7 digit factors = almost 10 million iterations
 // 99956644665999 is the product of 9997647 and 9998017 - Iterations: 9398280
+
+// TODO Check if palindromic numbers with even numbers always are divisible by 11 and improve algorithm
+// If so we can start at 990 (smallest number below 1000) that is divisible by 11) and step down by 11
+// for (var i = 990; i > 99 && candidate < i * 999; i -= 11) {
+// This solves the problem in 388 iterations
+
+// This code would imply that it is
+proven = true;
+for ( var i = 10; i < 10000000; i++ ) {
+    var p = i + "" + String(i).split("").reverse("").join("");
+    p = parseInt(p, 10);
+    if ( p % 11 !== 0 ) {
+        proven = false;
+        alert(p + " not divisible by 11");
+    }
+}
+// alert(proven);
+// true
