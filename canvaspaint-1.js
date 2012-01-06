@@ -24,6 +24,8 @@ draw.setCurColor("teal").strokeRect(100, 50, 600, 350).setCurColor("white");
 
 
 // Börja rita
+//TODO: Use lib events instead of DOM 0
+
 draw.canvas().onmousedown = function () {
     draw.canvas().onmousemove = paint_within_area;
 };

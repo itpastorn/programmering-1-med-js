@@ -13,7 +13,7 @@ function drawRandomCircleTimeout() {
     draw.circle(draw.randomX(), draw.randomY(), draw.randomInteger(100), draw.randomColor());
     if ( drawRandomCircle.count < 100 ) {
     	drawRandomCircle.count += 1;
-    	window.setTimeout(drawRandomCircleTimeout, 250	);
+    	window.setTimeout(drawRandomCircleTimeout, 250);
     }
 }
 drawRandomCircleTimeout.count = 0;
@@ -23,6 +23,7 @@ function drawRandomCircle() {
     draw.circle(draw.randomX(), draw.randomY(), draw.randomInteger(100), draw.randomColor());
 }
 // draw.canvas().onclick = drawRandomCircle;
+//TODO: Use lib events instead of DOM 0
 
 function drawPositionedCircle(evt) {
 	// Must get position relative to the canvas...
@@ -31,5 +32,6 @@ function drawPositionedCircle(evt) {
 }
 
 draw.canvas().onclick = drawPositionedCircle;
+//TODO: Use lib events instead of DOM 0
 
 
