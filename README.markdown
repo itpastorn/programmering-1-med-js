@@ -14,3 +14,20 @@ Status
 ------
 
 Bara påbörjat
+
+Moment att gå igenom
+--------------------
+
+Verktyg i Firefox
+* Scratchpad
+* Felkonsollen
+* Webbkonsollen 
+
+En editor
+* Gedit
+* Notepad++
+
+"Ett första exempel"
+
+"Vad är programmering?"
+
