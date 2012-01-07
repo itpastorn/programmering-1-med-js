@@ -22,12 +22,18 @@ function paint_within_area(evt) {
 draw.setCurColor("teal").strokeRect(100, 50, 600, 350).setCurColor("white");
 //Osynlig till en början
 
+// Överkurs: clip() gör att inget hamnar utanför rutan
+draw.raw().beginPath();
+draw.raw().rect(100, 50, 600, 350);
+draw.raw().clip();
+// clip() är smart att använda när man vill ha vissa delar av ytan intakt
 
 // Börja rita
 //TODO: Use lib events instead of DOM 0
 
 draw.canvas().onmousedown = function () {
-    draw.canvas().onmousemove = paint_within_area;
+    // draw.canvas().onmousemove = paint_within_area;
+    draw.canvas().onmousemove = paint; // OK med clip
 };
 
 // Sluta rita
@@ -56,8 +62,3 @@ document.getElementById("blue").onclick = function () {
     draw.setCurColor("blue");
 };
 
-// Anteckning
-draw.saveAsPNG = function () {
-    // http://www.nihilogic.dk/labs/canvas2image/
-	// this här syftar på det returnerade objektet
-};

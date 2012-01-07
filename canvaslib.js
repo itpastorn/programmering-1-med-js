@@ -140,7 +140,32 @@ function startCanvas(id) {
     };
 }
 
+// TODO: seal + approved way of adding new properties and methods
+// Anteckning - detta ska gå - fast på ett skrare sätt
+//draw.saveAsPNG = function () {
+    // http://www.nihilogic.dk/labs/canvas2image/
+	// this här syftar på det returnerade objektet
+//};
+
 // Check out http://libcanvas.github.com/
 // + https://github.com/jeremyckahn/rekapi/blob/master/README.md ESPECIALLY "actor"
 // Tutorial http://projects.joshy.org/presentations/HTML/CanvasDeepDive/presentation.html
+
+
+/*
+ * Lite anteckningar
+draw.raw().save();
+draw.raw().fillStyle = "lime";
+draw.raw().shadowColor = "black";
+draw.raw().shadowBlur = 10;
+draw.raw().beginPath();
+draw.raw().arc(350, 200, 10, 0, Math.PI * 2, true);
+draw.raw().closePath();
+draw.raw().fill();
+draw.raw().restore();
+
+
+isPointInPath()
+
+ */
 
