@@ -151,6 +151,8 @@ function startCanvas(id) {
 // + https://github.com/jeremyckahn/rekapi/blob/master/README.md ESPECIALLY "actor"
 // Tutorial http://projects.joshy.org/presentations/HTML/CanvasDeepDive/presentation.html
 
+// Denna liknar min idé!
+// http://lab.aerotwist.com/canvas/fireworks/
 
 /*
  * Lite anteckningar

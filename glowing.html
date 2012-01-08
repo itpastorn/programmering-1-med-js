@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Neonlysande linjer (funkar inte i MSIE)</title>
+  <style>
+    body {
+        margin: 0;
+        background-color: black;
+    }
+    canvas {
+        background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="glowcanvas">Neonlysande linjer</canvas>
+  <script src="canvaslib.js"></script>
+<script>
+var glow = startCanvas("glowcanvas");
+
+glow.canvas().width = window.innerWidth;
+glow.canvas().height = window.innerHeight - 5;
+
+
+var lastX = glow.raw().width * Math.random();
+var lastY = glow.raw().height * Math.random();
+var hue = 0;
+
+function line(context, lastX, lastY, hue) {
+    context.save();
+    context.beginPath();
+    context.lineWidth = 5 + Math.random() * 10;
+    context.moveTo(lastX, lastY);
+    lastX = context.canvas.width * Math.random();
+    lastY = context.canvas.height * Math.random();
+    context.bezierCurveTo(context.canvas.width  * Math.random(),
+                          context.canvas.height * Math.random(),
+                          context.canvas.width  * Math.random(),
+                          context.canvas.height * Math.random(),
+                          lastX, lastY);
+
+    hue = hue + 10 * Math.random();
+    context.strokeStyle = 'hsl(' + hue + ', 50%, 50%)';
+    // Uppgift - flytta ut shadowColor och ShadowBlur eftersom de aldrig ändras
+    context.shadowColor = 'white';
+    context.shadowBlur  = 10;
+    context.stroke();
+    context.restore();
+    // Extra parametrar funkar inte i MSIE
+    setTimeout(line, 80, context, lastX, lastY, hue);
+}
+line( glow.raw(), lastX, lastY, hue);
+
+function blank(context) {
+    context.fillStyle = 'rgba(0,0,0,0.1)';
+    context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+}
+// Extra parametrar funkar inte i MSIE
+setInterval(blank, 100, glow.raw());
+</script>
+</body>
+</html>
+<!--
+Ursprungligen från HTML "living standard"
+4.8.11.1.14 Examples
+http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html
+-->
