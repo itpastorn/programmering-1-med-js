@@ -94,12 +94,31 @@ Solution:
 
 Always use ===
 
-Except when comparing to null.
+Except when comparing to null and undefined is OK too.
 
 
 If you are used to PHP, JavaScript is really tricky. PHP has sane conversion rules and the double equality comparison works as expected.
 
-Especially in PHP the string "0" is falsy.
+Especially in PHP the string "0" is always falsy.
+
+How non booleans convert in JavaScript depends on the setting:
+
+    if ("0")           { alert("Truthy?") }; // Alert
+    if ("0" == false ) { alert("Truthy?") }; // No alert, because false converted first... Stupid!
+
+And this is really messy:
+
+    null != true
+    null != false
+
+    undefined != true
+    undefined != false
+
+Solution:
+
+Always use ===
+
+Except when comparing to null and undefined is OK too.
 
 
 Quirk #n: NaN
@@ -175,6 +194,8 @@ Always use the base parameter with parseInt:
 
     parseInt("010", 10) === 10
 
+Number takes arrays, parseInt does not
+
     Number([2]) === 2  // Array with single value
     Number(["2"]) === 2  // Also works with a string value
     
@@ -236,6 +257,21 @@ In JavaScript:
     }
 
 
+Quirk #n: The || operator is the awesome (but not always boolean)
+-----------------------------------------------------------------
+
+    var foo = "hi";
+    var bar = foo || "hello";
+    // bar === "hi"
+
+Great for some assignments:
+
+    function hadle_event(e) {
+        e = e || window.event;
+        // ...
+    }
+
+
 Quirk #n: Everything (really is not) an object
 ----------------------------------------------
 
@@ -259,6 +295,15 @@ Never use the wrapper functions to instantiate objects
 
     var foo = new Number(45);
     typeof foo === "object" // thus foo is error prone
+
+This example is even worse
+
+    var foo = new Boolean(false);
+    if (foo) {
+        alert("You'd really think this wouldn't show, but it does!")
+    }
+
+It's OK to invoke the wrapper functions for type casting, just do not use them as constructors.
 
 
 Quirk #n: Hidden eval
@@ -315,6 +360,11 @@ This is how you should do it!
 
 * Better performance
 * Less to type
+* Array constructors are error prone
+
+    var foo = new Array("3"); // [ "3" ] 
+    var foo = new Array(3);   // [ undefined, undefined, undefined ]
+    var foo = new Array(-1);  // throws an exception
 
 
 Quirk #n: Arrays
@@ -338,6 +388,9 @@ A better pattern
         prop : "qwerty",
         items : [item1, item2]
     };
+
+You want an associate array? Use objects! After all, in JavaScript that's
+really what an object is, except that properties may be functions. Which is awesome!
 
 
 Quirk #n: Lambda functions
@@ -377,6 +430,16 @@ If somebody writes:
 The global variable undefined is now "foo". Really bad.
 
 
-Quirk #n:
----------
+Quirk #n: We can live wihout with
+---------------------------------
 
+TODO
+
+
+
+Inspiration
+-----------
+
+ * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
+ * Crockford
+ 
