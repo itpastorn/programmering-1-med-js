@@ -80,7 +80,7 @@ The plus operator will concatenate
 
 Conversions may produce NaN (see below)
 
-Beware of octals
+Beware of octals (common in dates)
 
 
 Quirk #n: No transitivity using ==
@@ -167,7 +167,9 @@ Quirk #n: Not every number conversion is identical
 --------------------------------------------------
 
     Number("010") === 10
-    parseInt("010") === 8   // octal
+    Number("08")  === 8
+    parseInt("010") === 8   // Octal
+    parseInt("08")  === 0   // Bad octal
 
 Always use the base parameter with parseInt:
 
