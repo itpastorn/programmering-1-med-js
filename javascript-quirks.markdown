@@ -116,11 +116,12 @@ Check for NaN:
     if ( foo !== foo ) { // foo is NaN }
     if ( isNaN(foo) ) { // foo is NaN }
 
-But isNaN will convert its argument to Number..
+But isNaN will convert its argument to Number first and produce unwanted results-
 
     isNaN("foo") === true
 
-ECMAScript Harmony will bring an even better check - the egal function. Backported to ES5:
+ECMAScript Harmony will bring an even better check - the egal function.
+Backported to ES5:
 
     Object.defineProperty(Object, 'is', {
         value: function(x, y) {
@@ -155,6 +156,11 @@ Thus, in EcmaScript Harmony:
 
     NaN is NaN   // true
     0   is -0    // false
+
+Compare to the old unwanted behavior:
+
+    NaN === NaN   // false
+    0   === -0    // true
 
 
 Quirk #n: Not every number conversion is identical
