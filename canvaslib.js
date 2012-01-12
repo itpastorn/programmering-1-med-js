@@ -1,4 +1,5 @@
 function startCanvas(id) {
+    "use strict";
     var canvas      = document.getElementById(id),
         context2D   = canvas.getContext('2d'),
         totalWidth  = canvas.width,
@@ -36,13 +37,13 @@ function startCanvas(id) {
             return curColor;
         },
         circle : function (x, y, r, color, log) {
-        	context2D.save();
+            context2D.save();
             context2D.fillStyle = color || this.getCurColor();
             context2D.beginPath();
             context2D.arc(x, y, r, 0, Math.PI * 2, true);
             context2D.closePath();
             context2D.fill();
-        	context2D.restore();
+            context2D.restore();
             if ( log ) {
                 console.log("Draw " + color + " colored circle at " + x + "/" + y + ", radius was " + r);
 
@@ -50,10 +51,10 @@ function startCanvas(id) {
             return this;
         },
         fillRect : function (x, y, width, height, color, log) {
-        	context2D.save();
+            context2D.save();
             context2D.fillStyle = color || this.getCurColor();
             context2D.fillRect(x, y, width, height);
-        	context2D.restore();
+            context2D.restore();
             if ( log ) {
                 console.log("Draw " + color + " colored rectangle at " + x + "/" + y +
                     ", width/height was " + width + "/" + height);
@@ -61,10 +62,10 @@ function startCanvas(id) {
             return this;
         },
         strokeRect : function (x, y, width, height, color, log) {
-        	context2D.save();
+            context2D.save();
             context2D.strokeStyle = color || this.getCurColor();
             context2D.strokeRect(x, y, width, height);
-        	context2D.restore();
+            context2D.restore();
             if ( log ) {
                 console.log("Draw " + color + " stroke.colored rectangle at " + x + "/" + y +
                     ", width/height was " + width + "/" + height);
@@ -72,11 +73,11 @@ function startCanvas(id) {
             return this;
         },
         text : function(text, x, y, color, size) {
-        	context2D.save();
+            context2D.save();
             context2D.font = size + "px sans-serif";
             context2D.fillStyle = color || this.getCurColor();
             context2D.fillText(text, x, y);
-        	context2D.restore();
+            context2D.restore();
             return this;
         },
         randomColor : function () {
@@ -144,7 +145,7 @@ function startCanvas(id) {
 // Anteckning - detta ska gå - fast på ett skrare sätt
 //draw.saveAsPNG = function () {
     // http://www.nihilogic.dk/labs/canvas2image/
-	// this här syftar på det returnerade objektet
+    // this här syftar på det returnerade objektet
 //};
 
 // Check out http://libcanvas.github.com/
