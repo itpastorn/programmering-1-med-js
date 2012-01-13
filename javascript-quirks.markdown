@@ -68,6 +68,14 @@ Rules to avoid ASI problems:
 Check your code using JSHint! (A slightly better JSLint)
 
 
+Tip: Be strict and use lint tools
+---------------------------------
+
+"use strict";
+
+JSHint
+
+
 Quirk #n: Dynamic variables
 ---------------------------
 
@@ -393,6 +401,14 @@ You want an associate array? Use objects! After all, in JavaScript that's
 really what an object is, except that properties may be functions. Which is awesome!
 
 
+Quirk #n: Things that looks like arrays
+---------------------------------------
+
+DOM-collections
+
+The arguments object
+
+
 Quirk #n: Lambda functions
 --------------------------
 
@@ -441,5 +457,6 @@ Inspiration
 -----------
 
  * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
- * Crockford
+ * http://javascript.crockford.com/code.html
+ * The Good Parts by Crockford and all his talks
  
