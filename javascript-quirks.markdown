@@ -190,6 +190,14 @@ Compare to the old unwanted behavior:
     0   === -0    // true
 
 
+Tip: By the way you can divide by zero
+--------------------------------------
+
+And get Infinity!
+
+Or negative Infinity.
+
+
 Quirk #n: Not every number conversion is identical
 --------------------------------------------------
 
