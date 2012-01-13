@@ -525,4 +525,5 @@ Inspiration
  * http://javascript.crockford.com/code.html
  * The Good Parts by Crockford and all his talks
  * The very weird stuff hee: http://wtfjs.com/
+ * JavaScript Garden: http://bonsaiden.github.com/JavaScript-Garden/
  
