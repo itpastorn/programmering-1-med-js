@@ -521,9 +521,15 @@ Want to use that global? (You shouldn't...)
 Inspiration
 -----------
 
- * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
- * http://javascript.crockford.com/code.html
+ * [Google JavaScript style guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+ * [Douglas Crockford's style guide](http://javascript.crockford.com/code.html)
  * The Good Parts by Crockford and all his talks
- * The very weird stuff hee: http://wtfjs.com/
- * JavaScript Garden: http://bonsaiden.github.com/JavaScript-Garden/
+ * [The very weird stuff at wtfjs.com[(http://wtfjs.com/)
+ * [JavaScript Garden](http://bonsaiden.github.com/JavaScript-Garden/)
+ 
+ 
+Special thanks to:
+------------------
+
+ * [Raynos](http://raynos.org/blog/)
  
