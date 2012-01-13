@@ -14,6 +14,14 @@ Why?
  * Some of these are just JavaScript being *awesome*!
 
 
+But first: Do not be scared!
+----------------------------
+
+We are dealing with the peculiarities and some of this really is weird.
+However, JavaScript is a beautiful language and it is very much doable
+to teach it to newbies.
+
+
 Use Firefox as the de facto standard implementation
 ---------------------------------------------------
 
@@ -57,6 +65,18 @@ ASI = Automatic Semicolon Insertion
  * Unexpected termination
  * No minification possible
  * Less readable code
+
+	function laugh()
+	{
+	    return
+	    {
+	        haha: "ha!"
+	    };
+	}
+	laugh();
+	// returns undefined
+
+Why? ASI happened after the return keyword.
 
 Rules to avoid ASI problems:
  
@@ -137,6 +157,10 @@ It poisons everything it touches
 Including this expression:
 
     NaN === NaN  // false! What?
+
+And this is just hilarious:
+
+    typeof NaN === "number"
 
 Check for NaN:
 
@@ -307,6 +331,10 @@ But numeric literals can not be invoked as functions.
     
     "qwerty".match(/e/) // works - yes that's a regexp
 
+But this little peculira bastard works:
+
+    2..toString(); // "2"
+
 Never use the wrapper functions to instantiate objects
 
     var foo = new Number(45);
@@ -460,6 +488,35 @@ Quirk #n: We can live wihout with
 TODO
 
 
+Quirk #n: Hoisting
+------------------
+
+    var a = 8;
+    var someFunc = function(){
+        console.log(a);
+        var a = 8;
+    };
+    someFunc(); // writes undefined
+
+Equivalent to:
+
+    var a = 8;
+    var someFunc = function(){
+        var a; // Hoisted
+        console.log(a);
+        a = 8;
+    };
+    someFunc(); // writes undefined
+
+Want to use that global? (You shouldn't...)
+
+    var a = 8;
+    var someFunc = function(){
+        console.log(a);
+        a = 9;
+    };
+    someFunc(); // 8
+
 
 Inspiration
 -----------
@@ -467,4 +524,5 @@ Inspiration
  * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
  * http://javascript.crockford.com/code.html
  * The Good Parts by Crockford and all his talks
+ * The very weird stuff hee: http://wtfjs.com/
  
