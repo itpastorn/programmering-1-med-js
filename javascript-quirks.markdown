@@ -1,5 +1,4 @@
-JavaScript quirks
-=================
+# JavaScript quirks #
 
 If you know Java, C/C++, C# or even PHP, JavaScript will sometimes confuse you.
 And you may confuse your students...
@@ -13,17 +12,19 @@ Why?
  * Some of these quirks are browser *bugs* and *inconsistencies*
  * Some of these are just JavaScript being *awesome*!
 
+This document should benefit anyone wishing to learn JavaScript, but the main target group is teachers
+that need to know the quirks that might show up during class. Thus I do not intend to document every JavaScript
+peculiarity, just the most important ones.
 
-But first: Do not be scared!
-----------------------------
+
+## But first: Do not be scared! ##
 
 We are dealing with the peculiarities and some of this really is weird.
 However, JavaScript is a beautiful language and it is very much doable
 to teach it to newbies.
 
 
-Use Firefox as the de facto standard implementation
----------------------------------------------------
+## Use Firefox as the de facto standard implementation ##
 
 After all Microsoft, Google, Apple and Opera do...
 
@@ -36,8 +37,7 @@ While Chrome may win a few more speed benchmarks, Firefox beats chrome on everyt
  * The scratchpad (Shift + F4) is an awesome tool for teaching
 
 
-Teaching tip
-------------
+## Teaching tip ##
 
 Firefox has opt-in block scope. Great when teaching scope.
 
@@ -56,9 +56,13 @@ Firefox has opt-in block scope. Great when teaching scope.
 
 In environments where you *can* use let (i.e. Firefox extensions) the feature is extremely popular.
 
+This will probably be part of ECMAScript Harmony.
 
-Quirk #n: Unhelpful help
-------------------------
+P.S. `alert()`, `confirm()` and `prompt()` are great when teaching or doing *simple tests*,
+but should not be used for real applications.
+
+
+## Quirk #n: Unhelpful help ##
 
 ASI = Automatic Semicolon Insertion
 
@@ -88,21 +92,21 @@ Rules to avoid ASI problems:
 Check your code using JSHint! (A slightly better JSLint)
 
 
-Tip: Be strict and use lint tools
----------------------------------
+## Tip: Be strict and use lint tools ##
+
+TODO
 
 "use strict";
 
 JSHint
 
 
-Quirk #n: Dynamic variables
----------------------------
+## Quirk #n: Dynamic variables ##
+
+TODO
 
 
-
-Quirk #n: Everything from the DOM is a string
----------------------------------------------
+## Quirk #n: Everything from the DOM is a string ##
 
 The plus operator will concatenate
 
@@ -111,8 +115,9 @@ Conversions may produce NaN (see below)
 Beware of octals (common in dates)
 
 
-Quirk #n: No transitivity using ==
-----------------------------------
+## Quirk #n: No transitivity using == ##
+
+TODO
 
 The problem:
 
@@ -149,8 +154,8 @@ Always use ===
 Except when comparing to null and undefined is OK too.
 
 
-Quirk #n: NaN
--------------
+## Quirk #n: NaN ##
+
 
 It poisons everything it touches
 
@@ -214,16 +219,14 @@ Compare to the old unwanted behavior:
     0   === -0    // true
 
 
-Tip: By the way you can divide by zero
---------------------------------------
+## Tip: By the way you can divide by zero ##
 
 And get Infinity!
 
 Or negative Infinity.
 
 
-Quirk #n: Not every number conversion is identical
---------------------------------------------------
+## Quirk #n: Not every number conversion is identical ##
 
     Number("010") === 10
     Number("08")  === 8
@@ -256,8 +259,7 @@ And this is also a quirk
     parseInt("7 sailors", 10) === 7
 
 
-Bonus tip: Converting strings to numbers
-----------------------------------------
+## Bonus tip: Converting strings to numbers ##
 
 In PHP this works:
 
@@ -297,8 +299,7 @@ In JavaScript:
     }
 
 
-Quirk #n: The || operator is the awesome (but not always boolean)
------------------------------------------------------------------
+## Quirk #n: The || operator is the awesome (but not always boolean) ##
 
     var foo = "hi";
     var bar = foo || "hello";
@@ -312,8 +313,7 @@ Great for some assignments:
     }
 
 
-Quirk #n: Everything (really is not) an object
-----------------------------------------------
+## Quirk #n: Everything (really is not) an object ##
 
 "In JavaScript everything is an object" - really?
 
@@ -323,17 +323,18 @@ There are wrapper functions to all primitives:
     typeof "2" === "string" // a primitive
 
 When primitives are invoked as objects, they are automatically wrapped behind the scenes.
-But numeric literals can not be invoked as functions.
+But numeric literals can not easily be invoked as objects, since the dot is interpreted as a decimal delimiter.
+You can use two dots or parenthesis to work around that issue.
 
     2.toString(); // syntax error
     var foo = 2;
     foo.toString(); // "2"
+    2..toString(); // "2"
+    (2).toString(); // "2"
+    2 .toString(); // "2" Notice the space between 2 and dot. Ambiguous style = Avoid!
+    
     
     "qwerty".match(/e/) // works - yes that's a regexp
-
-But this little peculira bastard works:
-
-    2..toString(); // "2"
 
 Never use the wrapper functions to instantiate objects
 
@@ -349,12 +350,17 @@ This example is even worse
 
 It's OK to invoke the wrapper functions for type casting, just do not use them as constructors.
 
+### Two values that won't wrap ###
 
-Quirk #n: Hidden eval
-----------------------
+ * null
+ * undefined
 
- * onfocus="foo()";
- * setInterval("foo()", 200);
+
+## Quirk #n: Hidden eval ##
+
+    onfocus="foo()";           // Antipattern
+    
+    setInterval("foo()", 200); // Antipattern
 
 Eval is evil!
 
@@ -365,30 +371,30 @@ Eval is evil!
 The first example is also *obtrusive*. Thou shalt not mix script and HTML.
 
 
-Quirk #n: What's this?
------------------------
+## Quirk #n: What's 'this'? ##
 
 The magic variable "this" is not bound!
 
 It is a good thing&tm; but highly confusing
 
- * When used in a regular function this === window
- * When used in an object context it's that object (sort of like in Java Classes)
- * When used when a function has been instantiated using "new Constructor()" it's the instance
-   * Foo() -> this is window
+ * When used globally or in a regular function **this === window** (ES 3) - a design flaw!
+ * When used globally or in a regular function **this === undefined** in ES 5 **strict mode**. 
+ * When used in an **object context** it's that object (sort of like in Java Classes)
+ * When used when a function has been instantiated using "new Constructor()" it's **the instance**
+   * Foo() -> this is window or undefined
    * new Foo() -> this is the instance of Foo
  * When used with event handlers (DOM 0) it's the element that received the event.
  * When used with event listeners (DOM 2+) it's the element that received the event.
- * When used with attachEvent (MS) it's 
+ * When used with attachEvent (MS) it's not!
    * Thankfully, mpst libraries normalize the event!
  * It can be explicitly set using Function.call and Function.apply
- * It can be explicitly set using closures, Object.bind (EcmaScript 5) and libraries 
+ * It can be explicitly using Object.bind (EcmaScript 5) and libraries 
+ * It can be cajoled to an object using nifty tricks with closures
 
 Phew!
 
 
-Quirk #n: Literals
-------------------
+## Quirk #n: Literals ##
 
 If you write
 
@@ -411,8 +417,7 @@ This is how you should do it!
     var foo = new Array(-1);  // throws an exception
 
 
-Quirk #n: Arrays
-----------------
+## Quirk #n: Arrays ##
 
 Arrays are objects and may have arbitrary named properties
 
@@ -437,20 +442,44 @@ You want an associate array? Use objects! After all, in JavaScript that's
 really what an object is, except that properties may be functions. Which is awesome!
 
 
-Quirk #n: Things that looks like arrays
----------------------------------------
+## Quirk #n: Things that looks like arrays ##
 
-DOM-collections
+TODO
+
+But are not!
+
+Not all array properties may be available. Fix:
+
+    Array.call(obj, )
+
+
+### DOM-collections ###
 
 The arguments object
 
 
-Quirk #n: Lambda functions
---------------------------
+## Tip: Type checking arrays ##
+
+TODO
+
+Confusing
+
+Lot's of bad ideas
+
+ES5
+
+    Array.isArray(obj)
+
+Pre ES 5
 
 
-Quirk #n: Function expressions
-------------------------------
+## Quirk #n: Lambda functions ##
+
+TODO
+
+## Quirk #n: Function expressions ##
+
+TODO
 
 Are available
 
@@ -459,15 +488,14 @@ Must be used when assignment is conditional
 Are not hoisted
 
 
-Quirk #n: Global variables are too easy to make and too easy to use
--------------------------------------------------------------------
+## Quirk #n: Global variables are too easy to make and too easy to use ##
 
 How to avoid:
 
 * Self-executing (a.k.a. self-invoking) anonymous functions
 * Design patterns
 
-Pro tip:
+### Pro tip on self-executing functions ##
 
     (function (window, document, undefined) {
         // Function body
@@ -482,14 +510,12 @@ If somebody writes:
 The global variable undefined is now "foo". Really bad.
 
 
-Quirk #n: We can live wihout with
----------------------------------
+## Quirk #n: I can't live with or without you ##
 
-TODO
+TODO "with" is evil
 
 
-Quirk #n: Hoisting
-------------------
+## Quirk #n: Hoisting ##
 
     var a = 8;
     var someFunc = function(){
@@ -517,9 +543,16 @@ Want to use that global? (You shouldn't...)
     };
     someFunc(); // 8
 
+If you do. at least make global variables **explicit**:
 
-Inspiration
------------
+    window.a = 8;
+    var someFunc = function(){
+        console.log(window.a);
+    };
+    someFunc(); // 8
+
+
+## Inspiration ##
 
  * [Google JavaScript style guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
  * [Douglas Crockford's style guide](http://javascript.crockford.com/code.html)
@@ -528,8 +561,7 @@ Inspiration
  * [JavaScript Garden](http://bonsaiden.github.com/JavaScript-Garden/)
  
  
-Special thanks to:
-------------------
+## Special thanks to ##
 
  * [Raynos](http://raynos.org/blog/)
  
