@@ -1,3 +1,8 @@
+/* jshint forin:true, eqnull:true, noarg:true, noempty:true, eqeqeq:true, strict:true,
+   undef:true, curly:true, browser:true, devel:true, es5:true, indent:4, maxerr:50, white:true */
+
+"use strict"; // JSHint kommer klaga "Use the function form". Tills vidare är detta dock OK.
+
 var draw = startCanvas("maincanvas");
 
 // Japans flagga
@@ -12,8 +17,8 @@ draw.clearScreen();
 function drawRandomCircleTimeout() {
     draw.circle(draw.randomX(), draw.randomY(), draw.randomInteger(100), draw.randomColor());
     if ( drawRandomCircle.count < 100 ) {
-    	drawRandomCircle.count += 1;
-    	window.setTimeout(drawRandomCircleTimeout, 250);
+        drawRandomCircle.count += 1;
+        window.setTimeout(drawRandomCircleTimeout, 250);
     }
 }
 drawRandomCircleTimeout.count = 0;

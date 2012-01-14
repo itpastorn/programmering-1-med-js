@@ -1,22 +1,47 @@
-// Capability detect
-// strict mode
+/* jshint forin:true, eqnull:true, noarg:true, noempty:true, eqeqeq:true, strict:true,
+   undef:true, curly:true, browser:true, devel:true, es5:true, indent:4, maxerr:50, white:true */
+
+/**
+ * A code library for teaching JavaScript with Canvas
+ * 
+ * @author Lars Gunther <gunther@keryx.se>
+ * @version pre-alpha
+ * @licence MIT
+ * @todo Capability detection
+ * @todo Documentation
+ * @todo Testing
+ * @todo Hundreds of things!
+ */
+
+// Capability detect strict mode
 var hasstrict = (function() {
     "use strict";
     return !this;
 }());
 
-// Canvas
+// Capability detect Canvas
 
-// Element.classlist
+// Capability detect Element.classlist
 
-// qurySelectorAll
+// Capability detect qurySelectorAll
 
-// DOM 2 events
+// Capability detect DOM 2 events
 
-// Object.create
+// Capability detect Object.create
 
-// TODO
+// Capability detect console
 
+// TODO more capability detection
+
+/**
+ * Initiating a canvasobject and returning all helper functions
+ * 
+ * Using a pattern similar to the module pattern, but do not want a singleton
+ * 
+ * @param string id The id in HTML for the canvas-object
+ * @returns object An object with that should be assigned to a variable
+ * @usage var draw = startCanvas(id)
+ */
 function startCanvas(id) {
     "use strict";
     var canvas      = document.getElementById(id),
@@ -34,6 +59,7 @@ function startCanvas(id) {
         canvasTop  += obj.offsetTop;
     } while (obj = obj.offsetParent);
 
+    // TODO: Switch from module pattern to revealing module pattern
     return {
         // Allows for real access to the context object
         raw : function () {

@@ -314,7 +314,8 @@ In JavaScript:
         return Number(value) === testing;
     }
 
-BTW: *Octal numbers are verboten in strict mode!*
+BTW: Octal *literals* (i.e. numbers that start with zero) are verboten in strict mode!
+But since parseInt most of the time gets a string as indata, you will still need the 2nd argument.
 
 
 ## Quirk #n: The || operator is the awesome (but not always boolean) ##
@@ -585,13 +586,19 @@ Function expressions:
  * Are not hoisted
  * Must be used when assignment is conditional (IE <= 8? doesn't support it)
 
-In ES 5 strict mode functon statements are not allowed in any block but the top level.
+In ES 5 strict mode functon statements are not allowed in any block but the top level
+of its containing function.
 
 This is kosher:
 
     function foo() {
         "use strict";
-        function bar() {}
+        // top level of foo
+        function bar() {
+            // strict mode is inherited
+            // top level of bar
+            function baz() {}
+        }
     }
 
 But this is not:
