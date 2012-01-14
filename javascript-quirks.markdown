@@ -34,7 +34,7 @@ While Chrome may win a few more speed benchmarks, Firefox beats chrome on everyt
  * First to implement new language features
    * both historically (JavaScript 1.6, 1.7, "use strict", etc)
    * and today (proxies, weak maps, byte array, etc)
- * The scratchpad (Shift + F4) is an awesome tool for teaching
+ * The scratchpad `Shift + F4` is an awesome tool for teaching
 
 
 ## Teaching tip ##
@@ -89,16 +89,16 @@ Rules to avoid ASI problems:
  * Always put brackets on the same line as the conditional or declaration
    * No pure K&R or Allman style
 
-Check your code using JSHint! (A slightly better JSLint)
-
 
 ## Tip: Be strict and use lint tools ##
 
 TODO
 
-"use strict";
+    "use strict";
 
 JSHint
+
+Check your code using [JSHint](http://www.jshint.com/)! (A slightly better JSLint)
 
 
 ## Quirk #n: Dynamic variables ##
@@ -108,9 +108,11 @@ TODO
 
 ## Quirk #n: Everything from the DOM is a string ##
 
+TODO
+
 The plus operator will concatenate
 
-Conversions may produce NaN (see below)
+Conversions may produce `NaN` (see below)
 
 Beware of octals (common in dates)
 
@@ -125,14 +127,14 @@ xxx
 
 Solution:
 
-Always use ===
+Always use `===`
 
 Except when comparing to null and undefined is OK too.
 
 
 If you are used to PHP, JavaScript is really tricky. PHP has sane conversion rules and the double equality comparison works as expected.
 
-Especially in PHP the string "0" is always falsy.
+Especially in PHP the string `"0"` is always falsy.
 
 How non booleans convert in JavaScript depends on the setting:
 
@@ -149,13 +151,15 @@ And this is really messy:
 
 Solution:
 
-Always use ===
+Always use `===` (triple equality, checking for *identical* values)
 
 Except when comparing to null and undefined is OK too.
 
 
 ## Quirk #n: NaN ##
 
+
+TODO 
 
 It poisons everything it touches
 
@@ -176,7 +180,7 @@ But isNaN will convert its argument to Number first and produce unwanted results
 
     isNaN("foo") === true
 
-ECMAScript Harmony will bring an even better check - the egal function.
+ECMAScript Harmony will bring an even better check - the **egal** function.
 Backported to ES5:
 
     Object.defineProperty(Object, 'is', {
@@ -204,9 +208,9 @@ The egal function will be vailable as an operator as well:
         // We can reliably know that foo is identical to bar even if both are NaN 
     }
 
-What about the bonus check?
+### What about the bonus check? ###
 
-According to normal JS 0 === -0, but 1/0 === Infinity and 1/-0 === -Infinity (non transient behavior)
+According to normal JS `0 === -0`, but `1/0 === Infinity` and `1/-0 === -Infinity` (non transient behavior)
 
 Thus, in EcmaScript Harmony:
 
@@ -233,7 +237,7 @@ Or negative Infinity.
     parseInt("010") === 8   // Octal
     parseInt("08")  === 0   // Bad octal
 
-Always use the base parameter with parseInt:
+Always use **the base parameter** with parseInt:
 
     parseInt("010", 10) === 10
 
@@ -355,6 +359,11 @@ It's OK to invoke the wrapper functions for type casting, just do not use them a
  * null
  * undefined
 
+Even though
+
+    typeof null === "object"
+
+This is just a bug in the language
 
 ## Quirk #n: Hidden eval ##
 
@@ -462,6 +471,8 @@ The arguments object
 
 TODO
 
+    typeof [] === "object"  // Not Array - sigh!
+
 Confusing
 
 Lot's of bad ideas
@@ -472,10 +483,41 @@ ES5
 
 Pre ES 5
 
+    obj instanceof Array   // Will get it right 99 %
+
+Better
+
+    Object.prototype.toString.call(obj) == '[object Array]'
+ 
+### Yes the `typeof` operator is broken ###
+
+    typeof null === "object"
+    typeof [] === "object"
+
+`instanceof` may work better
+
+    null instanceof Object === false
+    [] instanceof Array === true
+
+But you can't use unwrapped primitives with `instanceof`
+
+    7 instanceof Number === false
+    7 instanceof number // ReferenceError: number is not defined
+
+Thus, there is no one perfect solution that checks reliably for every kind of value.
+There are proposals to tix this in ES Harmony, but nothing has been agreed upon yet.
+
 
 ## Quirk #n: Lambda functions ##
 
 TODO
+
+May be named
+
+Which is better than using `arguments.callee`
+
+Which is not allowed in ES 5 strict mode
+
 
 ## Quirk #n: Function expressions ##
 
@@ -495,6 +537,7 @@ How to avoid:
 * Self-executing (a.k.a. self-invoking) anonymous functions
 * Design patterns
 
+
 ### Pro tip on self-executing functions ##
 
     (function (window, document, undefined) {
@@ -513,6 +556,16 @@ The global variable undefined is now "foo". Really bad.
 ## Quirk #n: I can't live with or without you ##
 
 TODO "with" is evil
+
+Confusing
+
+Kills performance
+
+Better to assign the chain to a variable:
+
+    var foo = walla.balla.bong.foo;
+    foo.prop = val;
+    foo.method();
 
 
 ## Quirk #n: Hoisting ##
@@ -550,6 +603,68 @@ If you do. at least make global variables **explicit**:
         console.log(window.a);
     };
     someFunc(); // 8
+
+## Quirk #n: JavaScript is not a class act ##
+
+TODO
+
+If somebody tells you that JS is not OO "unlike Java". Laugh and run away!
+
+You may program JS using a procedural, OO or functional paradigm.
+
+Except for null and undefined everything can be treated as an object. (See above.)
+
+But JavaScript do **not** have **immutable classes** defined pre-compile time. JavaScript has
+**prototypes**.
+
+Prototypes are powerful and it is perfectly possible to emulate classes. But everyone that
+starts out doing this sooner or later stops and embraces the native prototypes instead.
+
+
+Note: ECMAScript Harmony might bring some kind of class construct. But it will be 
+*syntactic sugar* around prototypes, not C++/Java/PHP-ish static classes.
+
+### Tip: Avoid `new` and use `Object.create()` ###
+
+TODO
+
+
+## Quirk #n: JavaScript !== DOM ##
+
+Most inconsistencies between browsers are not in the core language but in the DOM.
+
+How to handle the DOM is not the purpose of this document but you should stick to the following principles:
+
+ * **Separate** behavior from content and design
+ * Which is one aspect of being **[unobtrusive](http://en.wikipedia.org/wiki/Unobtrusive_JavaScript)**
+ * And is usually best done using **progressive enhancement**
+ * **Capability detect** - do not sniff browser versions
+ 
+Avoid like the plague:
+
+ * `document.write()`
+ * Hidden eval (see above)
+ * TODO
+
+
+## Teaching aspects of libraries ##
+
+To what extent should you use libraries? It depends on what you are teaching? In the Swedish gymnasium
+I'd recommend this:
+
+ * Programming 1 and 2: Use some libraries to help students overcome browser inconsistencies and facilitate
+   faster "set up and tear down". Another use is to provide some help with really complicated stuff like
+   powerful animations for SVG and Canvas and collission detection. But mostly the course should be "pure" JS.
+ * Webbutveckling 1: The focus for this course is HTML and CSS. Using JQuery or a similar library is actually
+   encouraged, but not in a way that violates best practice.
+ * Webbutveckling 2: While this is not a pure course in programming and the use of libraries is taken for granted
+   the student must know the basics of JavaScript and the DOM. Please also note that now that browsers have stuff
+   like `document.querySelectorAll`, `element.classList.toggle()` and almost universal support for DOM 2 events 
+   (available in IE9+), CSS *transformation*, *transitions* and *animations* lots of stuff that previously
+   required libraries are within the reach of normal developers using raw functions.
+ * While there is some freedom for specialization, this course really is designed for digging deep in to the DOM,
+   especially new functionality like geolocation, session and local storage, audio and video api:s, etc.
+   However, if the student chooses to make a WebGL app it is almost suicidal not to use libraries... (Matrix math!)
 
 
 ## Inspiration ##
