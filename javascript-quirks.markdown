@@ -679,17 +679,17 @@ Avoid like the plague:
 To what extent should you use libraries? It depends on what you are teaching? In the Swedish gymnasium
 I'd recommend this:
 
- * Programming 1 and 2: Use some libraries to help students overcome browser inconsistencies and facilitate
+ * **Programming 1 and 2:** Use some libraries to help students overcome browser inconsistencies and facilitate
    faster "set up and tear down". Another use is to provide some help with really complicated stuff like
    powerful animations for SVG and Canvas and collission detection. But mostly the course should be "pure" JS.
- * Webbutveckling 1: The focus for this course is HTML and CSS. Using JQuery or a similar library is actually
+ * **Webbutveckling 1:** The focus for this course is HTML and CSS. Using JQuery or a similar library is actually
    encouraged, but not in a way that violates best practice.
- * Webbutveckling 2: While this is not a pure course in programming and the use of libraries is taken for granted
+ * **Webbutveckling 2:** While this is not a pure course in programming and the use of libraries is taken for granted
    the student must know the basics of JavaScript and the DOM. Please also note that now that browsers have stuff
    like `document.querySelectorAll`, `element.classList.toggle()` and almost universal support for DOM 2 events 
    (available in IE9+), CSS *transformation*, *transitions* and *animations* lots of stuff that previously
    required libraries are within the reach of normal developers using raw functions.
- * While there is some freedom for specialization, this course really is designed for digging deep in to the DOM,
+ * **Webbutveckling 3:** While there is some freedom for specialization, this course really is designed for digging deep in to the DOM,
    especially new functionality like geolocation, session and local storage, audio and video api:s, etc.
    However, if the student chooses to make a WebGL app it is almost suicidal not to use libraries... (Matrix math!)
 
@@ -699,7 +699,7 @@ I'd recommend this:
  * [Google JavaScript style guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
  * [Douglas Crockford's style guide](http://javascript.crockford.com/code.html)
  * The Good Parts by Crockford and all his talks
- * [The very weird stuff at wtfjs.com[(http://wtfjs.com/)
+ * [The very weird stuff at wtfjs.com](http://wtfjs.com/)
  * [JavaScript Garden](http://bonsaiden.github.com/JavaScript-Garden/)
  
  
