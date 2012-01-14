@@ -311,7 +311,7 @@ In JavaScript:
 
 Great for some assignments:
 
-    function hadle_event(e) {
+    function handle_event(e) {
         e = e || window.event;
         // ...
     }
@@ -420,6 +420,8 @@ This is how you should do it!
 * Better performance
 * Less to type
 * Array constructors are error prone
+
+Examples:
 
     var foo = new Array("3"); // [ "3" ] 
     var foo = new Array(3);   // [ undefined, undefined, undefined ]
