@@ -1,3 +1,22 @@
+// Capability detect
+// strict mode
+var hasstrict = (function() {
+    "use strict";
+    return !this;
+}());
+
+// Canvas
+
+// Element.classlist
+
+// qurySelectorAll
+
+// DOM 2 events
+
+// Object.create
+
+// TODO
+
 function startCanvas(id) {
     "use strict";
     var canvas      = document.getElementById(id),

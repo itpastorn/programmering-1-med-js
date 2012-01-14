@@ -23,6 +23,12 @@ We are dealing with the peculiarities and some of this really is weird.
 However, JavaScript is a beautiful language and it is very much doable
 to teach it to newbies.
 
+### This is not a lesson plan ###
+
+This is not an outline of stuff to teach or a suggested order for things to be brought up in class.
+This document is aimed at **teachers** who will need to explain *some* of this stuff, but will
+probably need to know it in order to help their students as problems occur.
+
 
 ## Use Firefox as the de facto standard implementation ##
 
@@ -95,6 +101,12 @@ Rules to avoid ASI problems:
 TODO
 
     "use strict";
+
+But do not "use strict" in the global scoop since that may destroy imported scripts that are not strict mode proof.
+
+One more reason to use a self executing anonymous function. (See below.)
+
+[MDN documentation about strict mode](https://developer.mozilla.org/en/JavaScript/Strict_mode/)_ 
 
 JSHint
 
@@ -302,6 +314,8 @@ In JavaScript:
         return Number(value) === testing;
     }
 
+BTW: *Octal numbers are verboten in strict mode!*
+
 
 ## Quirk #n: The || operator is the awesome (but not always boolean) ##
 
@@ -387,7 +401,7 @@ The magic variable "this" is not bound!
 It is a good thing&tm; but highly confusing
 
  * When used globally or in a regular function **this === window** (ES 3) - a design flaw!
- * When used globally or in a regular function **this === undefined** in ES 5 **strict mode**. 
+ * When used globally or in a regular function **this === null** in ES 5 **strict mode**. 
  * When used in an **object context** it's that object (sort of like in Java Classes)
  * When used when a function has been instantiated using "new Constructor()" it's **the instance**
    * Foo() -> this is window or undefined
@@ -488,7 +502,13 @@ That liveness can be tricky...
 
 TODO
 
-ES 5 notes
+ES 5 strict mode notes
+
+> Strict mode makes arguments and eval less bizarrely magical. (MDN)
+
+ * No `arguments.callee` (use named function expressions instead)
+ * No `arguments.caller`
+ * The arguments object is no longer updated when an individual parameter variable is changed
 
 The future?
 [ES Harmony rest parameters](http://wiki.ecmascript.org/doku.php?id=harmony:rest_parameters)
@@ -504,7 +524,7 @@ Confusing
 
 Lot's of bad ideas
 
-ES5
+ES 5
 
     Array.isArray(obj)
 
@@ -515,6 +535,7 @@ Pre ES 5
 Better
 
     Object.prototype.toString.call(obj) == '[object Array]'
+
  
 ### Yes the `typeof` operator is broken ###
 
@@ -535,7 +556,7 @@ Thus, there is no one perfect solution that checks reliably for every kind of va
 There are proposals to tix this in ES Harmony, but nothing has been agreed upon yet.
 
 
-## Quirk #n: Lambda functions ##
+## Quirk #n: Lambda functions and functions as first class objects ##
 
 TODO
 
@@ -546,15 +567,41 @@ Which is better than using `arguments.callee`
 Which is not allowed in ES 5 strict mode
 
 
-## Quirk #n: Function expressions ##
+## Quirk #n: Function expressions and function declarations ##
 
-TODO
+This is a function *declaration*:
 
-Are available
+    function foo() {}
 
-Must be used when assignment is conditional
+These are function *expressions*:
 
-Are not hoisted
+    var foo = function () {}
+    var foo = function bar () {}  // Can be invoked as foo(), not as bar()
+
+Function expressions are available, since functions are **first class objects**
+
+Function expressions:
+
+ * Are not hoisted
+ * Must be used when assignment is conditional (IE <= 8? doesn't support it)
+
+In ES 5 strict mode functon statements are not allowed in any block but the top level.
+
+This is kosher:
+
+    function foo() {
+        "use strict";
+        function bar() {}
+    }
+
+But this is not:
+
+    function foo(a) {
+        "use strict";
+        if ( a ) {
+            function bar() {}
+        }
+    }
 
 
 ## Quirk #n: Global variables are too easy to make and too easy to use ##
@@ -593,6 +640,8 @@ Better to assign the chain to a variable:
     var foo = walla.balla.bong.foo;
     foo.prop = val;
     foo.method();
+
+BTW! `with` is verboten in strict mode! (syntax error)
 
 
 ## Quirk #n: Hoisting ##
@@ -672,6 +721,43 @@ Avoid like the plague:
  * `document.write()`
  * Hidden eval (see above)
  * TODO
+
+
+## AJAX and security notes ##
+
+TODO
+
+Use a library or disregard old IE versions for teaching. Libraries are convenient, though!
+
+Prefer JSON over XML as a data format.
+
+(E4X is broken and may even be removed from Firefox.)
+
+Do not eval JSON (or anything else sent by the server or submitted by the user)
+
+ES 5 has bult in JSON functions. Use an official library for old browsers.
+
+Treat everything from outside sources as potential poison.
+
+More tips:
+
+ * Server applications should use server only cookies
+ * TODO
+
+### When is it OK to eval? ###
+
+When all of these apply:
+
+ * When you're an experienced developer
+ * When you submit your code to rigorous testing
+ * When you are letting other experts review your code
+ * You're in strict mode which makes eval somewhat safer in supporting browsers
+
+And when one of these apply:
+
+ * You are working on a teaching or developer tool
+ * You are contributing to a JSON library for old browsers
+ * You are employed by Google and you are ordered by your boss to break every rule...
 
 
 ## Teaching aspects of libraries ##
