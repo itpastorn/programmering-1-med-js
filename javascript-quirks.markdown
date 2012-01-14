@@ -459,12 +459,37 @@ But are not!
 
 Not all array properties may be available. Fix:
 
-    Array.call(obj, )
+    Array.prototype.*method*.call(obj, 0);
 
 
 ### DOM-collections ###
 
-The arguments object
+**Live** nodelists are returned by:
+
+ * `getElementsByTagName()`
+ * `getElementsByName()`
+ * `getElementsByClassName()`
+
+And the following properties are live nodelists:
+
+ * `Element.childNodes`
+ * `Element.children`
+
+That liveness can be tricky...
+
+**Static** nodelists are returned by:
+
+ * `querySelectorAll()`
+
+
+### The arguments object ###
+
+TODO
+
+ES 5 notes
+
+The future?
+[ES Harmony rest parameters](http://wiki.ecmascript.org/doku.php?id=harmony:rest_parameters)
 
 
 ## Tip: Type checking arrays ##
