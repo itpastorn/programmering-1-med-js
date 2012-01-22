@@ -402,7 +402,7 @@ The magic variable "this" is not bound!
 It is a good thing&tm; but highly confusing
 
  * When used globally or in a regular function **this === window** (ES 3) - a design flaw!
- * When used globally or in a regular function **this === null** in ES 5 **strict mode**. 
+ * When used globally or in a regular function **this === undefined** in ES 5 **strict mode**. 
  * When used in an **object context** it's that object (sort of like in Java Classes)
  * When used when a function has been instantiated using "new Constructor()" it's **the instance**
    * Foo() -> this is window or undefined
