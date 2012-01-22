@@ -26,21 +26,25 @@ try {
 
 
 /**
- * Simple bubblesort
+ * Simple bubble sort
  * 
  * This function will modify the array being passed by reference
+ * BTW, never ever use bubble sort for anything but testing
+ * http://en.wikipedia.org/wiki/Bubble_sort
  */
 function bubblesort (a, cfun) {
     "use strict";
     var sorted = false;
+    var len = a.length - 1;
     while ( !sorted ) {
         sorted = true;
-        for ( var i = 0, len = a.length - 1; i < len; i += 1) {
+        for ( var i = 0; i < len; i += 1) {
             if ( cfun(a[i], a[i+1]) > 0 ) {
                 [a[i], a[i+1]] = [a[i+1], a[i]];
                 sorted = false;
             }
         }
+        len -= 1;
     }
     return a;
 }
@@ -121,6 +125,6 @@ Array.sort(test.slice(0), compare);
 console.log("Time spent using built in Array.sort: " + (Date.now() - start_time) + " ms");
 
 // Approximate results during my tests (5000 items):
-// Bubblesort ~ 4500 ms
+// Bubblesort ~ 2800 ms
 // Quicksort  ~   23 ms
 // Array.sort ~    6 ms
