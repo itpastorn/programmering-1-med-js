@@ -1,3 +1,8 @@
+/* jshint forin:true, eqnull:true, noarg:true, noempty:true, eqeqeq:true, strict:true,
+   undef:true, curly:true, browser:true, devel:true, es5:true, indent:4, maxerr:50, white:true */
+
+// Note: JSHint will complain about destructuring assignment. This is a willful violation.
+
 /**
  * The purpose of this file is to explain what sorting algorithms are 
  * and why they should NOT be re-implemented in userland code
@@ -26,13 +31,14 @@ try {
  * This function will modify the array being passed by reference
  */
 function bubblesort (a, cfun) {
+    "use strict";
     var sorted = false;
     while ( !sorted ) {
         sorted = true;
         for ( var i = 0, len = a.length - 1; i < len; i += 1) {
             if ( cfun(a[i], a[i+1]) > 0 ) {
-            	[a[i], a[i+1]] = [a[i+1], a[i]];
-            	sorted = false;
+                [a[i], a[i+1]] = [a[i+1], a[i]];
+                sorted = false;
             }
         }
     }
@@ -49,6 +55,7 @@ function bubblesort (a, cfun) {
  * @return Array
  */
 function trivial_quicksort(a, cfun) {
+    "use strict";
     if ( !Array.isArray(a) ) {
         throw new Error("First argument to trivial_quicksort must be an array");
     }
@@ -80,10 +87,11 @@ function trivial_quicksort(a, cfun) {
 }
 
 function compare(a, b) {
+    "use strict";
     return a - b;
 }
 
-//Make an array containing - use more items on fast machines
+//Make an array - use more items on fast machines
 var test = [];
 // Test speed using an array of 100 items
 var start_time = Date.now();
