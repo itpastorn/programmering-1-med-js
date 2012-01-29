@@ -8,7 +8,7 @@ And you may confuse your students...
 
 Why?
 
- * Some of these quirks are *design flaws*, a bi-product of Netscape rushing an immature product to the market
+ * Some of these quirks are *design flaws*, a by-product of Netscape rushing an immature product to the market
  * Some of these quirks are browser *bugs* and *inconsistencies*
  * Some of these are just JavaScript being *awesome*!
 
@@ -20,7 +20,7 @@ peculiarity, just the most important ones.
 ## But first: Do not be scared! ##
 
 We are dealing with the peculiarities and some of this really is weird.
-However, JavaScript is a beautiful language and it is very much doable
+However, JavaScript is a beautiful language and it can easily
 to teach it to newbies.
 
 ### This is not a lesson plan ###
@@ -41,7 +41,10 @@ While Chrome may win a few more speed benchmarks, Firefox beats chrome on everyt
    * both historically (JavaScript 1.6, 1.7, "use strict", etc)
    * and today (proxies, weak maps, byte array, etc)
  * The scratchpad `Shift + F4` is an awesome tool for teaching
+ 
+## Tip: Keep the Error Console visible ##
 
+In Firefox or Opera this is a separate Window. Keep it open all the time while testing new scripts.
 
 ## Teaching tip ##
 
@@ -222,7 +225,7 @@ The egal function will be vailable as an operator as well:
 
 ### What about the bonus check? ###
 
-According to normal JS `0 === -0`, but `1/0 === Infinity` and `1/-0 === -Infinity` (non transient behavior)
+According to normal JS `0 === -0`, but `1/0 === Infinity` and `1/-0 === -Infinity` (breaking expectations)
 
 Thus, in EcmaScript Harmony:
 
@@ -464,7 +467,7 @@ A better pattern
         items : [item1, item2]
     };
 
-You want an associate array? Use objects! After all, in JavaScript that's
+You want an associative array? Use objects! After all, in JavaScript that's
 really what an object is, except that properties may be functions. Which is awesome!
 
 
@@ -774,7 +777,7 @@ I'd recommend this:
 
  * **Programming 1 and 2:** Use some libraries to help students overcome browser inconsistencies and facilitate
    faster "set up and tear down". Another use is to provide some help with really complicated stuff like
-   powerful animations for SVG and Canvas and collission detection. But mostly the course should be "pure" JS.
+   powerful animations for SVG and Canvas and collision detection. But mostly the course should be "pure" JS.
  * **Webbutveckling 1:** The focus for this course is HTML and CSS. Using JQuery or a similar library is actually
    encouraged, but not in a way that violates best practice.
  * **Webbutveckling 2:** While this is not a pure course in programming and the use of libraries is taken for granted
@@ -799,4 +802,5 @@ I'd recommend this:
 ## Special thanks to ##
 
  * [Raynos](http://raynos.org/blog/)
+ * [J. R. Stockton](http://www.merlyn.demon.co.uk/)
  
