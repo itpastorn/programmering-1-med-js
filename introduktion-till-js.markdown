@@ -25,7 +25,7 @@ JavaScript != "Java light"
 
 ## Standardisering ##
 
-HTML, CSS och DOM standardiseras av W3C.
+HTML, CSS och DOM standardiseras av **W3C**.
 
 JavaScript av **ECMA** (European Computer Manufacturers Association)
 
@@ -42,14 +42,14 @@ implementeringen som andra följer.
 
 [Detaljerad tabell på Wikipedia](http://en.wikipedia.org/wiki/JavaScript#Versions)
 
-  JS    ES    År    Webbläsare                Kommentar
-  1.0         1996  Netscape Navigator 2.0    Också MSIE 3
-  1.3   1+2   1998  Netscape Navigator 4.06   Också MSIE 4   
-  1.5   3     2000  NN 6/ Firefox 1           Successivt in i MSIE 5.5 -8 + Opera och Safari
-  1.6         2005  Firefox 1.5               Successivt till Opera, Safari och Chrome
-  1.7         2006  Firefox 2                 (Delar kommer till ECMAScript Harmony)
-  1.8         2008  Firefox 3                 Opera 11.50
-  1.8.5 5     2009  Firefox 4                 MSIE 9, Chrome, Opera, Safari (2011)
+    JS    ES    År    Webbläsare                Kommentar
+    1.0         1996  Netscape Navigator 2.0    Också MSIE 3
+    1.3   1+2   1998  Netscape Navigator 4.06   Också MSIE 4   
+    1.5   3     2000  NN 6/ Firefox 1           Successivt in i MSIE 5.5 -8 + Opera och Safari
+    1.6         2005  Firefox 1.5               Successivt till Opera, Safari och Chrome
+    1.7         2006  Firefox 2                 (Delar kommer till ECMAScript Harmony)
+    1.8         2008  Firefox 3                 Opera 11.50
+    1.8.5 5     2009  Firefox 4                 MSIE 9, Chrome, Opera, Safari (2011)
 
 Alla webbläsare från 2012 och framåt stödjer i **mycket** god utsträckning _ECMAScript 5.1_
 
@@ -71,15 +71,15 @@ De delar av värdmiljön som direkt relaterar till dokumentet som visas _i_ webb
 
 Exempel - detta är DOM och BOM:
 
-  document.getElementById("foo")  // Hitta elemntet med id = foo
-  window.setInterval(foo, 100)    // Kör funktionen foo var 100:e millisekund
-  window.location.href            // Adressen till sidan där man är
-  elem.addEventListener()         // Lägg till en händelselyssnare
+    document.getElementById("foo")  // Hitta elemntet med id = foo
+    window.setInterval(foo, 100)    // Kör funktionen foo var 100:e millisekund
+    window.location.href            // Adressen till sidan där man är
+    elem.addEventListener()         // Lägg till en händelselyssnare
 
 Detta är "ren" JavaScript:
 
-  var foo = 53;
-  var elev = { namn: "Kalle", klass: "9c" };
+    var foo = 53;
+    var elev = { namn: "Kalle", klass: "9c" };
 
 ## DOM som det stora problemet ##
 
@@ -102,12 +102,12 @@ NN 3.0 som _de facto_ standard kallas DOM 0 ("noll") och innehåller flera saker
 
 Dit hör **händelsehanterare** (event handlers):
 
-  element.onclick = function;
+    element.onclick = function;
 
 Den officiella standarden har något kraftfullare: **lyssnare** (event listeners), men fram till och med MSIE 8, så stöddes de inte av just MSIE:
 
-  elem.addEventListener("click", fn, false)  // Standard: Firefox, Opera, Safari, Chrome + MSIE 9+
-  elem.attachEvent("onclick", fn)            // Icke-standard: MSIE 4-8
+    elem.addEventListener("click", fn, false)  // Standard: Firefox, Opera, Safari, Chrome + MSIE 9+
+    elem.attachEvent("onclick", fn)            // Icke-standard: MSIE 4-8
 
 När en händelse inträffar så skapas ett **objekt** som innehåller egenskaper med information om händelsen.
 
@@ -124,8 +124,8 @@ MSIE har haft andra namn, eller samma namn fast viss skillnad på implementation
 
 Lär dig känna igen denna lösning, för om du googlar finns det mängder av skräp på nätet.
 
-  if ( navigator.appName.indexOf() ) {}
-  if ( document.layers ) {}
+    if ( navigator.appName.indexOf() ) {}
+    if ( document.layers ) {}
 
 Etc.
 
@@ -150,7 +150,7 @@ Somliga webbplatser kan uppatera en **del** av sidan med ny information som skic
 Klassisk sidvisning:
 
  1. Visa sidan
- 2. Användaren fyller i ett formulär eller klickar på en länk
+ 2. Användaren fyller i ett formulär och "submittar" eller klickar på en länk
  3. Visa en ny sida
 
 Ajax:
@@ -294,6 +294,8 @@ Nätverksaccess:
  * Web Sockets
  * Server sent events
  * Offline
+ * XHR2 (= nästa generations Ajax)
+ * CORS (= Förbättrad säkerhet för Ajax när man måste kommunicera med *olika* servrar)
 
 Hårdvaruaccess:
 
