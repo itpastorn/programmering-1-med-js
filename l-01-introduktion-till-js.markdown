@@ -302,10 +302,10 @@ Hårdvaruaccess:
  * Geolocation (tillgång till GPS-info)
  * Accelerometern (tilt events)
  * Touch events
- * "Pointer lock" - vrid rummet, flytta inte muspekaren
+ * [Pointer lock](http://dvcs.w3.org/hg/pointerlock/raw-file/default/index.html) - vrid rummet, flytta inte muspekaren
  * Kameran
  * Filsystemet
- * Bluetooth, USB,
+ * Bluetooth, USB, [gamepads](http://jlongster.com/2011/12/29/rotating-webpages-with-a-gamepad.html), etc.
 Etc.
 
 Du kan snart göra "nästan allt" i webbläsaren.
@@ -323,4 +323,11 @@ HTML och CSS används för så mycket mer än bara webbplatser, ex. ePub.
 JavaScript är ett bra och kraftfullt språk som bara kommer att öka i betydelse under överskådlig tid.
 
 Det finns många missförstånd och dåliga råd som skapar förvirring och får dig skriva dålig kod.
+
+-------------------------------
+# Markdown to slides #
+
+ * [html5-slides-markdown](adamzap.com/random/html5-slides-markdown.html) gjord i Python, körs lokalt
+ * [Slido](http://slido.herokuapp.com/about) Webbtjänst men dålig på att tolka koden
+ 
 
