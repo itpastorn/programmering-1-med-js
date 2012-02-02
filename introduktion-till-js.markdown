@@ -1,6 +1,6 @@
-= JavaScript =
+# JavaScript #
 
-== Kort historik ==
+## Kort historik ##
 
  * Netscape vill ha skript i webbläsaren
  * Brendan Eich får bara _två veckor_ på sig, innan första versionen presenterades
@@ -9,7 +9,7 @@
  * _Namnet_ ägs av Oracle, som köpt Sun, där Java uppfanns
  * Microsoft kallar sin version JScript
 
-== Användning ==
+## Användning ##
 
  * I webbläsaren: "Client side scripting"
  * På servern: "Server side scripting" (ovanligt fram tills 2010)
@@ -23,7 +23,7 @@ men numera har många insett att det är en helt galen föreställning.
 
 JavaScript != "Java light"
 
-== Standardisering ==
+## Standardisering ##
 
 HTML, CSS och DOM standardiseras av W3C.
 
@@ -35,7 +35,7 @@ Standardiseringen gick _hastigt_ och har följts _dåligt_. Detta bidrog till de
 
 Men främst är det DOM-delen som skiljer (mer nedan).
 
-== Versioner ==
+## Versioner ##
 
 Netscape, sedan Mozilla, har alltid varit drivande i utvecklingen och skapat _de facto_ 
 implementeringen som andra följer.
@@ -59,7 +59,7 @@ Stora delar av den finns redan i Firefox, vissa delar i Chrome, några delar i M
 
 I den här kursen kommer vi att hastigt titta på nyckelordet _"let"_ som bara stöds av Firefox (en del av JavaScript 1.7 och **troligen** en del av "Harmony")
 
-== JavaScript kontra DOM och BOM ==
+## JavaScript kontra DOM och BOM ##
 
 JavaScript körs i en **värdmiljö** ("host object"), vanligtvis en webbläsare.
 
@@ -81,7 +81,7 @@ Detta är "ren" JavaScript:
   var foo = 53;
   var elev = { namn: "Kalle", klass: "9c" };
 
-== DOM som det stora problemet ==
+## DOM som det stora problemet ##
 
 Det dröjde innan standardiseringen av DOM kom igång. Då hade Netscape och Microsoft utvecklat egna varianter
 i syfte att skapa **minsta** möjliga interoperabilitet.
@@ -118,9 +118,9 @@ Exempel:
 
 MSIE har haft andra namn, eller samma namn fast viss skillnad på implementationen, på dessa egenskaper.
 
-== Hur hantera detta ==
+## Hur hantera detta ##
 
-=== Dålig kösning: Browsersniffa ===
+### Dålig kösning: Browsersniffa ###
 
 Lär dig känna igen denna lösning, för om du googlar finns det mängder av skräp på nätet.
 
@@ -135,7 +135,7 @@ Browsersniff funkar dåligt:
  * Webbläsare utvecklas!
  * Onödig komplexitet
 
-=== Tre bättre lösningar ===
+### Tre bättre lösningar ###
 
  1. Kapacitetsdetektera (object detection, capability detection)
  2. Använd ett bibliotek, typ [JQuery](http://jquery.com/).
@@ -143,7 +143,7 @@ Browsersniff funkar dåligt:
 
 Den sista "lösningen" använder vi på den här kursen. Vi lär oss för framtiden! (Den kan inte användas om en kund vill ha en produkt idag.)
 
-== Ajax ==
+## Ajax ##
 
 Somliga webbplatser kan uppatera en **del** av sidan med ny information som skickats från servern.
 
@@ -167,7 +167,7 @@ Namnet Ajax myntades av Jesse James Garret 2003 och stod *ursprungligen* för "A
 
 Ajax är en slogan, snarare än en exakt teknik. När vi programmerar är det bättre att använda begreppet __XHR__ (XmlHttpRequest) för den teknik som används.
 
-== God praxis ==
+## God praxis ##
 
 **DHTML** - JavaScript på 90-talet bidrog till att göra webben sämre.
 
@@ -207,9 +207,9 @@ För att gömma JavaScript för webbläsare som fanns på marknaden före 1996 s
 
 Det finns fortfarande artiklar och instruktionsfilmer på Youtube som 15 år senare säger att du *måste* använda detta knep!
 
-== Vad moderna webbläsare kan ==
+## Vad moderna webbläsare kan ##
 
-=== Exekvera (köra) koden vansinnigt snabbt ===
+### Exekvera (köra) koden vansinnigt snabbt ###
 
 Mer än 100 gånger snabbare än för några år sedan.
 
@@ -223,7 +223,7 @@ Mer än 100 gånger snabbare än för några år sedan.
   * Carakan (Opera)
   * Chakra (MSIE 9+)  
   
-=== ECMAScript 5.1 och lite "Harmony" ===
+### ECMAScript 5.1 och lite "Harmony" ###
 
 Största vinsten? Inga skillnader längre!
 
@@ -233,7 +233,7 @@ Blockera några "bad parts" av språket:
 
 Fler funktioner.
 
-=== DOM 3.0 och lite 4.0 ===
+### DOM 3.0 och lite 4.0 ###
 
 Största vinsten? Inga skillnader längre!
 
@@ -241,7 +241,7 @@ Webbläsarna tar till och med bort saker de varit ensamma om!
 
 Kraftfullare funktioner.
 
-=== HTML5 och annat nytt ===
+### HTML5 och annat nytt ###
 
 NEWT = New and Exciting Web Technologies
 
@@ -310,13 +310,13 @@ Du kan snart göra "nästan allt" i webbläsaren.
 
 HTML och CSS används för så mycket mer än bara webbplatser, ex. ePub.
 
-== Andra språk för programmering på klientsidan ==
+## Andra språk för programmering på klientsidan ##
 
  * VBScript (Microsoft) - slog aldrig igenom. (Kunde öppna CD-ROM luckan...)
  * Dart (Google) - har mött ganska ljummet intresse.
  * Coffeescript (Mozilla) - är ett sätt att "skriva" JavaScript!
 
-== Slutsatser ==
+## Slutsatser ##
 
 JavaScript är ett bra och kraftfullt språk som bara kommer att öka i betydelse under överskådlig tid.
 
