@@ -23,6 +23,37 @@ men numera har många insett att det är en helt galen föreställning.
 
 JavaScript != "Java light"
 
+## Varifrån hämtade Brendan Eich sin inspiration? ##
+
+  * Self
+  * Scheme, en dialekt av Lisp
+  * Java (därtill beordrad)
+
+JavaScript tillhör **C-familjen** av språk, liksom Java och PHP.
+
+ * Satser avslutas med semikolon (men det är _ibland_ frivilligt, tyvärr.)
+ * Block avgränsas med måsvingar {}
+ * Villkor skrivs inom parenteser
+ * Har styrstrukturerna
+
+    if - else
+    switch
+    while
+    do - while
+    for
+
+## Eleganta egna drag ##
+
+**Literals** för objekt och arrayer.
+
+    var me = {
+        age: 45,
+        name: "Lars"
+    };
+    var someNames = ["Olle", "Eva", "Pelle", "Lisa"];
+
+Detta har skapat en standard för beskrivning av data: JSON = JavaScript Object Notation.
+
 ## Standardisering ##
 
 HTML, CSS och DOM standardiseras av **W3C**.
