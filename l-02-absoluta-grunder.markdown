@@ -271,7 +271,7 @@ Upphöjt till löses med metoden pow i objektet Math.
 
 ## Jämförelseoperatorer ##
 
-Dessa returnerar boolska värden
+[Dessa](https://developer.mozilla.org/en/JavaScript/Reference/Operators/Comparison_Operators) returnerar boolska värden
 
     3 < 5       // true
     4 <= 4      // true
@@ -285,12 +285,16 @@ Dessa returnerar boolska värden
 
 ## Logiska operatorer ##
 
+[Operatorer för boolsk algebra](https://developer.mozilla.org/en/JavaScript/Reference/Operators/Logical_Operators),
+men med vissa egenheter 
+
     foo && bar  // och
-    foo || bar  // eller
-    foo xor bar // antingen eller
+    foo || bar  // eller - om foo är "truthy" är värdet inte true, utan värdet av foo
     !foo        // "inte" foo - negation
 
 Lägg märke till att ! är en _prefix_ operator med bara en operand.
+
+JavaScript saknar xor (antingen eller)
 
 ## Tilldelning (assignment) ##
 
@@ -345,13 +349,21 @@ Motsvarar nämligen:
         var foo = bar;
     }
 
+## Några speciella operatorer ##
+
+ * typeof är en operator
+ * instanceof
+ * delete
+
 ## Andra operatorer vi tills vidare skippar ##
 
+[Det finns många!](https://developer.mozilla.org/en/JavaScript/Reference#Operators_and_other_keywords)
+
+ * "Member operators" - behandlas med objekt
  * Binär matematik
  * Den "ternära operatorn"
- * invocation
+ * Invocation
  * Parenteser - behöver inte förklaras
- * TODO
 
 ## Uttryck som blandar värdetyper ##
 
