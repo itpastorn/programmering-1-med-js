@@ -223,18 +223,18 @@ När du googlar efter svar på specifika frågor eller söker svar via diskussio
 
 Det finns också varningssignaler du bör känna till:
 
-  <body onload="foo()"> dvs. HTML och JavaScript blandas
-  document.write()
-  eval()
-  <script language="javascript">   Attributet language är föråldrat och icke-standard.
+    <body onload="foo()"> dvs. HTML och JavaScript blandas
+    document.write()
+    eval()
+    <script language="javascript">   Attributet language är föråldrat och icke-standard.
 
 För att gömma JavaScript för webbläsare som fanns på marknaden före 1996 så användes följande knep:
 
-  <script>
-  <!--
-  // JS kod här dold inom HTML-kommentarer
-  -->
-  </script>
+    <script>
+    <!--
+    // JS kod här dold inom HTML-kommentarer
+    -->
+    </script>
 
 Det finns fortfarande artiklar och instruktionsfilmer på Youtube som 15 år senare säger att du *måste* använda detta knep!
 
@@ -246,14 +246,14 @@ Mer än 100 gånger snabbare än för några år sedan.
 
 **JIT** = Just in Time kompilering.
 
-  * Tracemonkey, JägerMonkey, IonMonkey (Firefox)
-    * Spidermonkey är grundfunktionerna
-  * Squirrelfish Extreme = Nitro (Safari)
-    * "JavaScript Core" är grundfunktionerna
-  * V8 med Crankshaft (Chrome)
-  * Carakan (Opera)
-  * Chakra (MSIE 9+)  
-  
+ * Tracemonkey, JägerMonkey, IonMonkey (Firefox)
+   * Spidermonkey är grundfunktionerna
+ * Squirrelfish Extreme = Nitro (Safari)
+   * "JavaScript Core" är grundfunktionerna
+ * V8 med Crankshaft (Chrome)
+ * Carakan (Opera)
+ * Chakra (MSIE 9+)  
+
 ### ECMAScript 5.1 och lite "Harmony" ###
 
 Största vinsten? Inga skillnader längre!
@@ -278,13 +278,13 @@ NEWT = New and Exciting Web Technologies
 
 Följande exempel är bara ett litet urval av allt som håller på att hända!
 
-HTML5:
+### HTML5 ###
 
  * Förenklingar (ex doctype, script utan "type", "meta charset")
  * Fler element och attribut (section, article, nav, aside, header, footer, figure, details, etc)
  * Formulärelement (date, number, email, 
 
-CSS 3 användbart idag:
+### CSS 3 användbart idag ###
 
  * Runda hörn!
  * Fler selektorer
@@ -297,12 +297,12 @@ CSS 3 användbart idag:
  * Transition (övergångar) och animation
  * CSS tabeller
 
-CSS 3 på gång:
+### CSS 3 på gång ###
 
  * Bättre layoutmöjligheter: Flexbox, "exclusions and shapes", "grid layout", "line grid"
  * CSS för "paged media"
 
-Grafik:
+### Grafik ###
 
  * SVG = Scalable Vector Graphics. Deklarativ och "retained mode" (objekten kan flyttas).
  * Canvas - 2D high level graphics. Imperativ och "immediate mode" (sudda, rita, sudda, rita).
@@ -310,7 +310,7 @@ Grafik:
 
 Dessutom används GPU:n för att snabba upp också vanlig HTML och CSS.
 
-Nya funktioner:
+### Nya funktioner ####
 
  * Drag and drop, inklusive dra en fil från "utforskaren"
  * Spela upp video
@@ -320,7 +320,7 @@ Nya funktioner:
  * Lagra data (session storage, IndexedDB)
  * Web workers (parallell exekvering)
 
-Nätverksaccess:
+### Nätverksaccess ###
 
  * Web Sockets
  * Server sent events
@@ -328,7 +328,7 @@ Nätverksaccess:
  * XHR2 (= nästa generations Ajax)
  * CORS (= Förbättrad säkerhet för Ajax när man måste kommunicera med *olika* servrar)
 
-Hårdvaruaccess:
+### Hårdvaruaccess ###
 
  * Geolocation (tillgång till GPS-info)
  * Accelerometern (tilt events)
@@ -356,6 +356,7 @@ JavaScript är ett bra och kraftfullt språk som bara kommer att öka i betydels
 Det finns många missförstånd och dåliga råd som skapar förvirring och får dig skriva dålig kod.
 
 -------------------------------
+
 # Markdown to slides #
 
  * [html5-slides-markdown](adamzap.com/random/html5-slides-markdown.html) gjord i Python, körs lokalt

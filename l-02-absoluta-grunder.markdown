@@ -88,11 +88,13 @@ Hoppsan!
 
 Variabler lagrar värden.
 
-Variabler har namn, liksom andra _symboler_
+Variabler har namn, liksom andra _symboler_ 
 
-Somliga ord är _[reserverade](https://developer.mozilla.org/en/JavaScript/Reference/Reserved_Words)_ och får inte användas som namn på symboler.
+Somliga ord är [reserverade](https://developer.mozilla.org/en/JavaScript/Reference/Reserved_Words) och får inte användas som namn på symboler.
 
-## Några ord som är reserverade i strict mode ##
+## Några ord som är reserverade ##
+
+Dessa ord används av själva språket.
 
  * break
  * do
@@ -307,7 +309,9 @@ JavaScript saknar xor (antingen eller)
     foo *= expr // samma som foo = foo * expr
     foo /= expr // samma som foo = foo / expr
 
-Listiga men knepiga, kan leda till problem, så vi undviker dessa:
+## Öka (inkrementera) och minska ##
+
+Listiga men knepiga, kan leda till problem, så vi undviker dessa i JavaScript
 
     foo++   // samma som foo += 1
     foo--   // samma som foo -= 1
@@ -322,7 +326,7 @@ Skillnade mellan _prefix_ och _postfix_ är **när** ökningen/minskningen sker:
     // bar tilldelades värdet av foo, sedan ökade foo med 1
 
 Jämför med:
-    
+
     var foo = 1;
     var bar = ++foo;
     // foo är nu 2 och bar är också 2
@@ -351,7 +355,9 @@ Motsvarar nämligen:
 
 ## Några speciella operatorer ##
 
- * typeof är en operator
+Dessa ord är en operatorer
+
+ * typeof
  * instanceof
  * delete
 
@@ -367,7 +373,11 @@ Motsvarar nämligen:
 
 ## Uttryck som blandar värdetyper ##
 
-TODO
+Om operatorerna har olika slags värde, så konverterar de automatiskt
+
+    true + 5     // 1      + 5   === 6
+    true + "5"   // "true" + "5" === "true5"
+    5 + "5"      // "5"    + "5" === "55"
 
 ## Typkonvertering som språkegenskap (computer science) ##
 
@@ -395,7 +405,17 @@ Vad tror du _older_ har för värde?
     var older = +age + 10;
 
 En unär + operator funkar alltså enklast!
-    
+
+### parseInt utan angivelse av bas kan leda till oväntade resultat ###
+
+    parseInt("010")  // 8 - inlednade nolla = oktala tal
+    parseInt("08")   // 0 - "malformed" oktala
+
+Tal som inleds med 0x är _hexadecimala_
+
+    0xa === 10
+    0xbb === 187 // 11 * 16 + 11
+
 ### Om typkonvertering till siffra misslyckas ###
 
 Så blir resultatet **NaN** = Not a Number
@@ -409,7 +429,7 @@ NaN är ett elände:
     NaN + 5 // NaN
     NaN + "5" // "NaN5" - konkatenering där NaN typkonverterar till "NaN"
 
-Man kan kolla om något är NaN med funktionen isNaN()
+### Man kan kolla om något är NaN med funktionen isNaN() ###
 
     isNaN(foo)
 
@@ -423,41 +443,34 @@ En bättre koll:
 
 ## Truthy/falsy ##
 
+När ett icke-boolskt värde används som villkor, så konverteras det.
 
-TODO
+Värden som konverteras till true kallas "truthy" (sant-aktiga)
 
-Används för kapacitetsdetektering
+Värden som konverteras till false kallas "falsy" (falsk-aktiga)
 
+Truthy-värden
+
+ * Alla tal utom noll
+ * Alla strängar utom den tomma strängen ""
+   * Strängen "0" är alltså truthy (vilket är dumt!)
+ * Alla objekt
+   * Inklusive arrayer
+   * Inklusive funktioner
+
+### Används för kapacitetsdetektering ###
+
+Om objektet finns kan det användas
+
+    if ( console && console.log ) {
+        console.log("hej");
+    }
+    
+    var foo = document.getElementById("foo");
+    if ( foo && foo.classList) {
+        foo.classList.toggle("bar");
+    }
 
 # "By reference" kontra "by value" #
 
-
-
------------------------------------------
-
-Minnesanteckningar - skapa lektion om
-
- * Styrstrukturer
- * Strängar
- * Math
- * Objekt (enkelt)
- * Arrayer
- * Funktioner
-   * Argument (men inte "arguments" i denna kurs)
-   * Returvärden
-   * Deklarationer
-   * Expressions
-   * Anonyma
-   * Som metoder // används bara passivt i kursen
-   * Skillnaden mellan fn och fn()
-   * Self-executing
- * Iteration
- * Rekursion
-
-För framtiden:
-
- * Enkelt om arv och prototyper
- * Enkelt om closures
- * this
- * Regexp
- * Funktionella array-metoder (reduce, map, etc)
+TODO
