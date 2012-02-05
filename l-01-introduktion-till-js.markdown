@@ -1,5 +1,11 @@
 # JavaScript #
 
+Viktigaste du behöver veta?
+
+ * Du hittar bra information på [Mozilla Developer Network](https://developer.mozilla.org/en/JavaScript/)
+ * Mycket annat om JavaScript på nätet är dålig information och vilseledande.
+ * Lättläst, men längre, kod **sparar jobb** jämfört med kort och svärläst kod.
+
 ## Kort historik ##
 
  * Netscape vill ha skript i webbläsaren
@@ -204,9 +210,9 @@ Ajax är en slogan, snarare än en exakt teknik. När vi programmerar är det b�
 
 *Webbstandardrörelsen* identifierade grunden för god praxis.
 
- 1. HTML styr upp innehåll
- 2. CSS styr upp utseende
- 3. DOM och JavaScript styr upp __beteende__
+ 1. HTML styr upp **innehåll**
+ 2. CSS styr upp **utseende**
+ 3. DOM och JavaScript styr upp **beteende**
 
 *Douglas Crockford* är en programmeringsguru som visat världen att JavaScript är:
 
@@ -228,6 +234,8 @@ Det finns också varningssignaler du bör känna till:
     eval()
     <script language="javascript">   Attributet language är föråldrat och icke-standard.
 
+### Exempel på dplig information ###
+
 För att gömma JavaScript för webbläsare som fanns på marknaden före 1996 så användes följande knep:
 
     <script>
@@ -245,6 +253,8 @@ Det finns fortfarande artiklar och instruktionsfilmer på Youtube som 15 år sen
 Mer än 100 gånger snabbare än för några år sedan.
 
 **JIT** = Just in Time kompilering.
+
+JavaScript-motorer:
 
  * Tracemonkey, JägerMonkey, IonMonkey (Firefox)
    * Spidermonkey är grundfunktionerna
@@ -310,7 +320,9 @@ Följande exempel är bara ett litet urval av allt som håller på att hända!
 
 Dessutom används GPU:n för att snabba upp också vanlig HTML och CSS.
 
-### Nya funktioner ####
+På den här kursen använder vi canvas
+
+### Nya funktioner ###
 
  * Drag and drop, inklusive dra en fil från "utforskaren"
  * Spela upp video

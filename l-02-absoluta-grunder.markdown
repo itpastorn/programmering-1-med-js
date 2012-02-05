@@ -2,6 +2,8 @@
 
 De minsta byggstenarna i språket.
 
+Testa alla kodexempel i scratchpad eller konsollen!
+
 # Kommentarer #
 
     // resten av raden
@@ -42,13 +44,54 @@ De minsta byggstenarna i språket.
 
 ## Objekt ##
 
-  * Object
+Objekt är en uppsättning _egenskaper_ (properties) med nyckel + värde
+
+    var o = {
+        name : "Lars",
+        age : 45,
+        guru : true,
+        doing : {
+            rightNow : "teaching",
+            later : "sleeping"
+        },
+        interests : ["basket", "web development"],
+        sayHi : function() { alert("hi") }
+    };
+
+I objektet ovan så finns det 6 egenskaper:
+
+ 1. name är av typen sträng
+ 2. age är av typen number
+ 3. guru är av typen boolean
+ 4. doing är av typen Object (objekt kan finnas i andra objekt)
+ 5. interests är av typen Array
+ 6. sayHi är av typen Function. Objektet har därigenom en _metod_, det kan göra något.
+
+### Objektnotation ###
+
+Man kan komma åt objektets egenskaper med punkt-notation (dot-notation)
+
+    o.name   // "Lars"
+    o.doing.rightNow  // "teaching"
+
+Man kan också använda _bracket notation_
+
+    o["age"]    // 45
+    var foo = "guru";
+    o[foo]     // true
+    o["doing"].later  // "sleeping"
+
+### Tre slags objekt att känna till ###
+
+  * Object (enkla)
   * Array
   * Function
 
-I JavaScript *är* funktionerna objekt.
+I JavaScript *är* funktionerna objekt (functions are first class objects)
 
-Värden av typerna number, string och boolean kan vid behov uppträda som objekt.
+### Primitives uppträder som objekt ibland ###
+
+Värden av typerna number, string och boolean kan _vid behov_ uppträda som objekt.
 
     typeof "hej"; // string
     "hej".length; // 3 - en egenskap som om det vore ett objekt
@@ -359,6 +402,7 @@ Dessa ord är en operatorer
 
  * typeof
  * instanceof
+ * is - kommer i ECMAScript Harmony
  * delete
 
 ## Andra operatorer vi tills vidare skippar ##
@@ -471,6 +515,48 @@ Om objektet finns kan det användas
         foo.classList.toggle("bar");
     }
 
+### Omvandling till äkta boolska värden ###
+
+Kan göras med !! (inte-inte)
+
+    !!""  // false
+    !!"a" // true
+    !!0   // false
+    !!3   // true
+    
 # "By reference" kontra "by value" #
 
-TODO
+Enkla värden (primitives) skickas _by value_
+
+    var foo = 5;
+    var bar = foo;
+    bar = 6;
+    console.log(foo); // 5
+
+Objekt skickas by _by reference_
+
+    var foo = { a : 5 };
+    var bar = foo;
+    bar.a = 2;
+    console.log(foo.a); // 2
+
+I det andra exemplet är alltså bar och foo **ett och samma objekt**
+
+## Objekt som skickas som argument till funktioner är också "by reference" ##
+
+    function fn(o) {
+        o.a = 3;
+    }
+    var foo = { a : 1 };
+    fn(foo);
+    console.log(foo); // 3
+
+Variabler som är "primitives" skickas "by value"
+
+    function fn(x) {
+        x = 0;
+    }
+    var foo = 5;
+    fn(foo);
+    console.log(foo); // fortfarande 5
+

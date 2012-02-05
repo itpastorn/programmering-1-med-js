@@ -57,7 +57,7 @@ function startCanvas(id) {
     do {
         canvasLeft += obj.offsetLeft;
         canvasTop  += obj.offsetTop;
-    } while (obj = obj.offsetParent);
+    } while ((obj = obj.offsetParent)); // Dubbla parenteser för att markera att det är en tilldelning
 
     // TODO: Switch from module pattern to revealing module pattern
     return {
