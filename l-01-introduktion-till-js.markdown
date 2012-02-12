@@ -98,7 +98,8 @@ I den här kursen kommer vi att hastigt titta på nyckelordet _"let"_ som bara s
 
 ## JavaScript kontra DOM och BOM ##
 
-JavaScript körs i en **värdmiljö** ("host object"), vanligtvis en webbläsare.
+[JavaScript körs i en **värdmiljö**](https://developer.mozilla.org/en/JavaScript_technologies_overview) ("host object"),
+vanligtvis en webbläsare.
 
 För att man ska kunna göra något, så erbjuder värden gränssnitt = **api** = application program interface.
 
@@ -366,6 +367,11 @@ HTML och CSS används för så mycket mer än bara webbplatser, ex. ePub.
 JavaScript är ett bra och kraftfullt språk som bara kommer att öka i betydelse under överskådlig tid.
 
 Det finns många missförstånd och dåliga råd som skapar förvirring och får dig skriva dålig kod.
+
+## Läs mer ##
+
+ * [The World's Most Misunderstood Programming Language](http://www.crockford.com/javascript/javascript.html)
+
 
 -------------------------------
 

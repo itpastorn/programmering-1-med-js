@@ -4,6 +4,12 @@ De minsta byggstenarna i språket.
 
 Testa alla kodexempel i scratchpad eller konsollen!
 
+Resurser:
+
+ * [Om JavaScript på MDN](https://developer.mozilla.org/en/JavaScript/)
+   * Läs speciellt "A re-introduction to JavaScript" (Uppe till höger)
+ * [The World's Most Misunderstood Programming Language](http://www.crockford.com/javascript/javascript.html)
+
 # Kommentarer #
 
     // resten av raden
