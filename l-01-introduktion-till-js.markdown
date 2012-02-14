@@ -183,7 +183,7 @@ Den sista "lösningen" använder vi på den här kursen. Vi lär oss för framti
 
 ## Ajax ##
 
-Somliga webbplatser kan uppatera en **del** av sidan med ny information som skickats från servern.
+Somliga webbplatser kan uppdatera en **del** av sidan med ny information som skickats från servern.
 
 Klassisk sidvisning:
 
@@ -235,7 +235,7 @@ Det finns också varningssignaler du bör känna till:
     eval()
     <script language="javascript">   Attributet language är föråldrat och icke-standard.
 
-### Exempel på dplig information ###
+### Exempel på dålig information ###
 
 För att gömma JavaScript för webbläsare som fanns på marknaden före 1996 så användes följande knep:
 
