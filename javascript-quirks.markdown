@@ -520,7 +520,8 @@ The future?
 
 ## Tip: Type checking arrays ##
 
-TODO
+It is pre-ECMAScript 5
+[actually very hard to determine with accuracy if an object is an array](https://developer.mozilla.org/web-tech/2010/07/26/determining-with-absolute-accuracy-whether-or-not-a-javascript-object-is-an-array/)
 
     typeof [] === "object"  // Not Array - sigh!
 
