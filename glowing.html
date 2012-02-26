@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Neonlysande linjer (funkar inte i MSIE)</title>
+  <style>
+    body {
+        margin: 0;
+        background-color: black;
+    }
+    canvas {
+        background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="glowcanvas">Neonlysande linjer</canvas>
+  <script src="canvaslib.js"></script>
+<script>
+var glow = startCanvas("glowcanvas");
+
+// Fyll hela dokumentfönstret
+glow.canvas().width = window.innerWidth;
+glow.canvas().height = window.innerHeight - 5;
+
+// startvärden första kurvan
+var lastX = glow.raw().width * Math.random();
+var lastY = glow.raw().height * Math.random();
+// Färg väljs ur "färghjul"
+var hue = 0;
+
+function line(context, lastX, lastY, hue) {
+    // Ignorera tills vidare (sparar "tillståndet")
+    context.save();
+    // Påbörja en ny kurva
+    context.beginPath();
+    // Bredd mellan 5 och 15
+    context.lineWidth = 5 + Math.random() * 10;
+    // Gå till startpunkt i koordinatsystemet = där förra kurvan slutade
+    context.moveTo(lastX, lastY);
+    // Slumpa fram en ny slutpunkt
+    lastX = context.canvas.width * Math.random();
+    lastY = context.canvas.height * Math.random();
+    // "Beställ" en kurva med slumpmässig böjning
+    context.bezierCurveTo(context.canvas.width  * Math.random(),
+                          context.canvas.height * Math.random(),
+                          context.canvas.width  * Math.random(),
+                          context.canvas.height * Math.random(),
+                          lastX, lastY);
+
+    // Gå ett slumpmässigt antal grader framåt i färghjulet
+    hue = hue + 10 * Math.random();
+    context.strokeStyle = 'hsl(' + hue + ', 50%, 50%)';
+    // Uppgift (längre fram) - flytta ut shadowColor och ShadowBlur eftersom de aldrig ändras
+    // Glödande kantlinje på kurvan
+    context.shadowColor = 'white';
+    context.shadowBlur  = 10;
+    // Genomför själva ritandet
+    context.stroke();
+    // Återställ gamla tillståndet
+    context.restore();
+    // Rekursivt anrop = anropa sig själv
+    // Extra parametrar funkar inte i MSIE
+    setTimeout(line, 80, context, lastX, lastY, hue);
+}
+// Första anropet av funktionen
+line( glow.raw(), lastX, lastY, hue);
+
+// Skapa en helsvart men mycket transparent "hinna" som läggs överst, men gradvis flyttas bakåt
+function blank(context) {
+    // svart med 90 & genomskinlighet
+    context.fillStyle = 'rgba(0,0,0,0.1)';
+    // fyrkant med fyllning
+    context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+}
+// Extra parametrar funkar inte i MSIE
+setInterval(blank, 100, glow.raw());
+</script>
+</body>
+</html>
+<!--
+Ursprungligen från HTML "living standard"
+4.8.11.1.14 Examples
+http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html
+-->
