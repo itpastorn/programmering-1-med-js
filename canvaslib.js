@@ -117,6 +117,16 @@ function startCanvas(id) {
             }
             return this;
         },
+        clearRect : function (x, y, width, height, color, log) {
+            context2D.save();
+            context2D.clearRect(x, y, width, height);
+            context2D.restore();
+            if ( log ) {
+                console.log("Cleared rectangle at " + x + "/" + y +
+                    ", width/height was " + width + "/" + height);
+            }
+            return this;
+        },
         text : function(text, x, y, color, size) {
             context2D.save();
             context2D.font = size + "px sans-serif";

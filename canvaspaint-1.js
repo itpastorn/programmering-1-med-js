@@ -3,9 +3,11 @@ var draw = startCanvas("maincanvas");
 function paint(evt) {
 	// Must get position relative to the canvas...
 	// Ugly and non X-browser
-    draw.circle(evt.pageX - draw.canvasX(), evt.pageY - draw.canvasY(), 10);
+    draw.circle(evt.pageX - 
+    draw.canvasX(), evt.pageY - draw.canvasY(), 10);
 }
 
+// Används inte längre
 function paint_within_area(evt) {
     // Must get position relative to the canvas...
     // Ugly and non X-browser
@@ -19,14 +21,16 @@ function paint_within_area(evt) {
 
 // Rita ruta som markerar ritytan
 // Exempel på "chaining"
-draw.setCurColor("teal").strokeRect(100, 50, 600, 350).setCurColor("white");
+draw.setCurColor("teal").strokeRect(100, 50, 600, 350).
+setCurColor("white");
 //Osynlig till en början
 
-// Överkurs: clip() gör att inget hamnar utanför rutan
+// Kolla: Kan jag använda samma ruta för att rita för ögat?
 draw.raw().beginPath();
 draw.raw().rect(100, 50, 600, 350);
 draw.raw().clip();
-// clip() är smart att använda när man vill ha vissa delar av ytan intakt
+// clip() är smart att använda när man vill ha vissa
+// delar av ytan intakt
 
 // Börja rita
 //TODO: Use lib events instead of DOM 0
@@ -61,4 +65,10 @@ document.getElementById("red").onclick = function () {
 document.getElementById("blue").onclick = function () {
     draw.setCurColor("blue");
 };
+
+// Uppgift 1: En färg till
+
+// Uppgift 2: Hårdkoda en annan "penselbredd"
+
+// Uppgift 3: Knappar som styr penselbredd via global variabel
 
