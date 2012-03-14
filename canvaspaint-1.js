@@ -3,8 +3,7 @@ var draw = startCanvas("maincanvas");
 function paint(evt) {
 	// Must get position relative to the canvas...
 	// Ugly and non X-browser
-    draw.circle(evt.pageX - 
-    draw.canvasX(), evt.pageY - draw.canvasY(), 10);
+    draw.circle(evt.pageX - draw.canvasX(), evt.pageY - draw.canvasY(), 10);
 }
 
 // Används inte längre
