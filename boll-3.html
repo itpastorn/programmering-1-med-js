@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Bollfabrik</title>
+  <style>
+    body {
+        width: 800px;
+        margin: auto;
+        font-family: sans-serif;
+        background: #AAA;
+        text-align: center;
+    }
+    canvas {
+        background-color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bollfabrik</h1>
+  <canvas id="maincanvas" width="800" height="450">Oops! Din webbläsare stödjer inte canvas.</canvas>
+  <p>
+    <button id="start">Starta/ny boll</button>
+    <button id="stop">Stoppa</button>
+    <button id="rm">Ta bort boll</button>
+    <button id="toggle">Rensa på/av</button>
+    <button id="inc">Snabbare</button>
+    <button id="dec">Långsammare</button>
+  </p>
+  <script src="canvaslib.js"></script>
+  <script src="boll-3.js"></script>
+</body>
+</html>

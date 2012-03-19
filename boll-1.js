@@ -53,7 +53,8 @@ function moveBall() {
         ball.xSpeed = Math.abs(ball.xSpeed);
     } else if ( ball.x > (field.x + field.width - ball.r / 2) ) {
         ball.xSpeed = -Math.abs(ball.xSpeed);
-    } else if ( ball.y < (field.y + ball.r / 2) ) {
+    }
+    if ( ball.y < (field.y + ball.r / 2) ) {
         ball.ySpeed = Math.abs(ball.ySpeed);
     } else if ( ball.y > (field.y + field.height - ball.r / 2) ) {
         ball.ySpeed = -Math.abs(ball.ySpeed);
@@ -73,13 +74,22 @@ moveBall();
 
 // Start
 document.getElementById("start").onclick = function () {
+    if ( ball.isMoving ) {
+        // Redan igång
+        return false;
+    }
     ball.isMoving = true;
     moveBall();
+    this.setAttribute("disabled", "disabled");
+    document.getElementById("stop").removeAttribute("disabled");
 };
 
+document.getElementById("stop").setAttribute("disabled", "disabled");
 // Stopp
 document.getElementById("stop").onclick = function () {
     ball.isMoving = false;
+    document.getElementById("start").removeAttribute("disabled");
+    this.setAttribute("disabled", "disabled");
 };
 
 // Lägg till clip för att förhindra bollen att ritas utanför ytan
@@ -95,6 +105,6 @@ document.getElementById("stop").onclick = function () {
 
 // Uppgift 3: Ändra vinkel
 
-// Uppgift 4: En boll till
+// Uppgift 4: Fler bollar
 
 
