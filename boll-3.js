@@ -84,10 +84,10 @@
     // Toggle if balls are cleared or are painting lines
     var clear = true;
     function moveBall() {
-	    // Rensa först spelplanen = radera bollen i dess förra position
-	    if ( clear ) {
-	        draw.clearRect(field.x, field.y, field.width, field.height);
-	    }
+        // Rensa först spelplanen = radera bollen i dess förra position
+        if ( clear ) {
+            draw.clearRect(field.x, field.y, field.width, field.height);
+        }
         for ( var i = 0, len = balls.length; i < len; i += 1 ) {
             if ( ball.isMoving ) {
                 // Räkna ut ny placering av bollen
@@ -112,7 +112,7 @@
             draw.circle(balls[i].x, balls[i].y, balls[i].r, balls[i].color, false);
         }
         if ( ball.isMoving ) {
-        	// Om man tar bort denna flyttar bollen ett steg per klick
+            // Om man tar bort denna flyttar bollen ett steg per klick
             setTimeout(moveBall, 20);
         }
     }
