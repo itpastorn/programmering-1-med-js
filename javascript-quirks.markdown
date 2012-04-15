@@ -798,7 +798,7 @@ I'd recommend this:
  * The Good Parts by Crockford and all his talks
  * [The very weird stuff at wtfjs.com](http://wtfjs.com/)
  * [JavaScript Garden](http://bonsaiden.github.com/JavaScript-Garden/)
- 
+ * [Principles of Writing Consistent, Idiomatic JavaScript](https://github.com/rwldrn/idiomatic.js)
  
 ## Special thanks to ##
 
