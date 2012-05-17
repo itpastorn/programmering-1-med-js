@@ -1,55 +1,11 @@
-/* jshint forin:true, eqnull:true, noarg:true, noempty:true, eqeqeq:true, strict:true,
-   undef:true, curly:true, browser:true, devel:true, es5:true, indent:4, maxerr:50, white:true */
-
-/**
- * A code library for teaching JavaScript with Canvas
- * 
- * @author Lars Gunther <gunther@keryx.se>
- * @version pre-alpha
- * @licence MIT
- * @todo Capability detection
- * @todo Documentation
- * @todo Testing
- * @todo Hundreds of things!
- */
-
-// Capability detect strict mode
-var hasstrict = (function() {
-    "use strict";
-    return !this;
-}());
-
-// Capability detect Canvas
-
-// Capability detect Element.classlist
-
-// Capability detect qurySelectorAll
-
-// Capability detect DOM 2 events
-
-// Capability detect Object.create
-
-// Capability detect console
-
-// TODO more capability detection
-
-/**
- * Initiating a canvasobject and returning all helper functions
- * 
- * Using a pattern similar to the module pattern, but do not want a singleton
- * 
- * @param string id The id in HTML for the canvas-object
- * @returns object An object with that should be assigned to a variable
- * @usage var draw = startCanvas(id)
- */
 function startCanvas(id) {
-    "use strict";
     var canvas      = document.getElementById(id),
         context2D   = canvas.getContext('2d'),
         totalWidth  = canvas.width,
         totalHeight = canvas.height,
         colors      = ["red", "pink", "green", "lime", "orange", "yellow", "maroon", "silver", "grey", "black", "blue", "navy", "lightblue"],
-        curColor    = "black";
+        curColor    = "black",
+        curFont     = "sans-serif";
 
     // Find position of canvas relative to the page (thanks PPK)
     // TODO: Recalculate on window resize and fullscreen toggle
@@ -57,9 +13,8 @@ function startCanvas(id) {
     do {
         canvasLeft += obj.offsetLeft;
         canvasTop  += obj.offsetTop;
-    } while ((obj = obj.offsetParent)); // Dubbla parenteser för att markera att det är en tilldelning
+    } while (obj = obj.offsetParent);
 
-    // TODO: Switch from module pattern to revealing module pattern
     return {
         // Allows for real access to the context object
         raw : function () {
@@ -81,14 +36,21 @@ function startCanvas(id) {
         getCurColor : function () {
             return curColor;
         },
+        setCurFont : function (font) {
+            curFont = font;
+            return this;
+        },
+        getCurFont : function () {
+            return curFont;
+        },
         circle : function (x, y, r, color, log) {
-            context2D.save();
+        	context2D.save();
             context2D.fillStyle = color || this.getCurColor();
             context2D.beginPath();
             context2D.arc(x, y, r, 0, Math.PI * 2, true);
             context2D.closePath();
             context2D.fill();
-            context2D.restore();
+        	context2D.restore();
             if ( log ) {
                 console.log("Draw " + color + " colored circle at " + x + "/" + y + ", radius was " + r);
 
@@ -96,10 +58,10 @@ function startCanvas(id) {
             return this;
         },
         fillRect : function (x, y, width, height, color, log) {
-            context2D.save();
+        	context2D.save();
             context2D.fillStyle = color || this.getCurColor();
             context2D.fillRect(x, y, width, height);
-            context2D.restore();
+        	context2D.restore();
             if ( log ) {
                 console.log("Draw " + color + " colored rectangle at " + x + "/" + y +
                     ", width/height was " + width + "/" + height);
@@ -107,32 +69,31 @@ function startCanvas(id) {
             return this;
         },
         strokeRect : function (x, y, width, height, color, log) {
-            context2D.save();
+        	context2D.save();
             context2D.strokeStyle = color || this.getCurColor();
             context2D.strokeRect(x, y, width, height);
-            context2D.restore();
+        	context2D.restore();
             if ( log ) {
                 console.log("Draw " + color + " stroke.colored rectangle at " + x + "/" + y +
                     ", width/height was " + width + "/" + height);
             }
             return this;
         },
-        clearRect : function (x, y, width, height, color, log) {
+        clearRect : function (x, y, width, height, log) {
             context2D.save();
             context2D.clearRect(x, y, width, height);
             context2D.restore();
             if ( log ) {
-                console.log("Cleared rectangle at " + x + "/" + y +
-                    ", width/height was " + width + "/" + height);
+                console.log("Cleared rectangle at " + x + "/" + y + ", width/height was " + width + "/" + height);
             }
             return this;
         },
         text : function(text, x, y, color, size) {
-            context2D.save();
-            context2D.font = size + "px sans-serif";
+        	context2D.save();
+            context2D.font = size + "px " + this.getCurFont();
             context2D.fillStyle = color || this.getCurColor();
             context2D.fillText(text, x, y);
-            context2D.restore();
+        	context2D.restore();
             return this;
         },
         randomColor : function () {
@@ -200,7 +161,7 @@ function startCanvas(id) {
 // Anteckning - detta ska gå - fast på ett skrare sätt
 //draw.saveAsPNG = function () {
     // http://www.nihilogic.dk/labs/canvas2image/
-    // this här syftar på det returnerade objektet
+	// this här syftar på det returnerade objektet
 //};
 
 // Check out http://libcanvas.github.com/
