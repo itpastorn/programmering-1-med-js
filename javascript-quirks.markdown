@@ -170,9 +170,13 @@ And this is really messy in JS:
     undefined != true
     undefined != false
 
-Solution:
+### Solution
 
 Always use `===` (triple equality, checking for *identical* values)
+
+If typecasting is needed, do it yourself!
+
+### Exception
 
 Except when *comparing to null* and undefined is OK too. Thus this is redundant:
 
