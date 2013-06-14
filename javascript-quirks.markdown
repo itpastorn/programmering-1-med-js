@@ -42,9 +42,9 @@ While Chrome may win a few more speed benchmarks, Firefox beats chrome on everyt
    * and today (proxies, weak maps, byte array, etc)
  * The scratchpad `Shift + F4` is an awesome tool for teaching
  
-## Tip: Keep the Error Console visible ##
+## Tip: Keep the Console visible ##
 
-In Firefox or Opera this is a separate Window. Keep it open all the time while testing new scripts.
+Errors will be logged in it and you may test small snippets of code there.
 
 ## Teaching tip ##
 
@@ -79,15 +79,15 @@ ASI = Automatic Semicolon Insertion
  * No minification possible
  * Less readable code
 
-	function laugh()
-	{
-	    return
-	    {
-	        haha: "ha!"
-	    };
-	}
-	laugh();
-	// returns undefined
+    function laugh()
+    {
+        return
+        {
+            haha: "ha!"
+        };
+    }
+    laugh();
+    // returns undefined
 
 Why? ASI happened after the return keyword.
 
