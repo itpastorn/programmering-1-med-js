@@ -194,12 +194,14 @@ Although Crockford would disagree, the majority of all JavaScripters think this 
 
 ## Quirk #n: NaN ##
 
+When JavaScript encounters a value that it should try to convert to a number, but it can not be converted,
+it gets the special value NaN (Not a Number). However, NaN is a problem. It will break any expectectation!
 
-TODO 
+Any math operation involving NaN will produce NaN.
 
-It poisons everything it touches
+    setTimeout ( function () { alert("hej"); }, NaN); // Will execute at once
 
-Including this expression:
+NaN poisons everything it touches! Including this expression:
 
     NaN === NaN  // false! What?
 
@@ -217,6 +219,9 @@ Why avoid isNaN()? It will convert its argument to Number first and produce unwa
     isNaN("foo") === true
 
 ECMAScript Harmony will bring an even better check - the **egal** function.
+
+    Object.is(x, y)  // NaN-safe ===
+
 Backported to ES5:
 
     Object.defineProperty(Object, 'is', {
