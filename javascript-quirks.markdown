@@ -209,10 +209,10 @@ And this is just hilarious:
 
 Check for NaN:
 
-    if ( foo !== foo ) { // foo is NaN }
-    if ( isNaN(foo) ) { // foo is NaN }
+    if ( foo !== foo ) { // foo is NaN } // Use this!
+    if ( isNaN(foo) ) { // foo is NaN }  // Seems obvious, but avoid!
 
-But isNaN will convert its argument to Number first and produce unwanted results-
+Why avoid isNaN()? It will convert its argument to Number first and produce unwanted results:
 
     isNaN("foo") === true
 
@@ -238,7 +238,7 @@ Backported to ES5:
         writable: true
     });
 
-The egal function will be vailable as an operator as well:
+The egal function will be vailable as an operator as well (but that can't be backported):
 
     if ( foo is bar ) {
         // We can reliably know that foo is identical to bar even if both are NaN 
