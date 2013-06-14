@@ -137,31 +137,32 @@ Conversions may produce `NaN` (see below)
 Beware of octals (common in dates)
 
 
-## Quirk #n: No transitivity using == ##
+## Quirk #n: Comparisons == ##
 
-TODO
+When comparing two values with == (2 equals signs) *type conversion* will happen, but in quite erratic ways.
 
-The problem:
+    '' == '0'          // false - no type conversion occured
+    0 == ''            // true - type conversion occured
+    0 == '0'           // true - no transitivity!
 
-xxx
-
-Solution:
-
-Always use `===`
-
-Except when comparing to null and undefined is OK too.
+The problem is that it is nigh impossible to account for all the different possible type conversion possibilities.
 
 
-If you are used to PHP, JavaScript is really tricky. PHP has sane conversion rules and the double equality comparison works as expected.
+If you are used to PHP, JavaScript is really tricky. PHP has more sane conversion rules and the double equality comparison (usually) works as expected.
 
 Especially in PHP the string `"0"` is always falsy.
 
 How non booleans convert in JavaScript depends on the setting:
 
-    if ("0")           { alert("Truthy?") }; // Alert
-    if ("0" == false ) { alert("Truthy?") }; // No alert, because false converted first... Stupid!
+    if ("0")           { alert("Truthy?"); }; // Alert
+    if ("0" == false ) { alert("Truthy?"); }; // No alert, because false converted first... Stupid!
 
-And this is really messy:
+Whereas in PHP the following works sanely:
+
+    if ("0")           { echo "Truthy?"; }; // No - falsy it is
+    if ("0" == false ) { echo "Truthy?"; }; // Yup, "0" is the same as "0" == false
+
+And this is really messy in JS:
 
     null != true
     null != false
@@ -173,7 +174,18 @@ Solution:
 
 Always use `===` (triple equality, checking for *identical* values)
 
-Except when comparing to null and undefined is OK too.
+Except when *comparing to null* and undefined is OK too. Thus this is redundant:
+
+    if ( x === null || x === undefined ) {
+        // do stuff
+    }
+
+Although Crockford would disagree, the majority of all JavaScripters think this is a better solution:
+
+    if ( x == null ) {
+        // do stuff
+    }
+
 
 
 ## Quirk #n: NaN ##
@@ -801,6 +813,7 @@ I'd recommend this:
  * [Google JavaScript style guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
  * [Douglas Crockford's style guide](http://javascript.crockford.com/code.html)
  * The Good Parts by Crockford and all his talks
+   * Excerpt: http://oreilly.com/javascript/excerpts/javascript-good-parts/bad-parts.html
  * [The very weird stuff at wtfjs.com](http://wtfjs.com/)
  * [JavaScript Garden](http://bonsaiden.github.com/JavaScript-Garden/)
  * [Principles of Writing Consistent, Idiomatic JavaScript](https://github.com/rwldrn/idiomatic.js)
