@@ -114,7 +114,7 @@ But do not "use strict" in the *global scope* since that may destroy imported sc
 
 One more reason to use a *self executing anonymous function*. (See below.)
 
-[MDN documentation about strict mode](https://developer.mozilla.org/en/JavaScript/Strict_mode/)_ 
+[MDN documentation about strict mode](https://developer.mozilla.org/en/JavaScript/Strict_mode/)
 
 ### JSHint
 
