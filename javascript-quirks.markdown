@@ -103,17 +103,20 @@ Rules to avoid ASI problems:
 
 ## Tip: Be strict and use lint tools ##
 
-TODO
+ECMAScript 5 introduced a very helpful strict mode. In that mode some error prone parts of JS
+are verboten. To get into strict mode, just put this pragma in your script;
 
     "use strict";
 
-But do not "use strict" in the global scoop since that may destroy imported scripts that are not strict mode proof.
+Older browsers will just treat it as text and ignore it.
 
-One more reason to use a self executing anonymous function. (See below.)
+But do not "use strict" in the *global scope* since that may destroy imported scripts that are not strict mode proof.
+
+One more reason to use a *self executing anonymous function*. (See below.)
 
 [MDN documentation about strict mode](https://developer.mozilla.org/en/JavaScript/Strict_mode/)_ 
 
-JSHint
+### JSHint
 
 Check your code using [JSHint](http://www.jshint.com/)! (A slightly better JSLint)
 
