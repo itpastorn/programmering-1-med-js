@@ -59,9 +59,9 @@ Firefox has opt-in block scope. Great when teaching scope.
     
     for (let i = 0; i < 2; i += 1) {
        // do something
+       // i is defined
     }
     alert(i); // error i is not defined
-
 
 In environments where you *can* use let (i.e. Firefox extensions) the feature is extremely popular.
 
@@ -78,6 +78,8 @@ ASI = Automatic Semicolon Insertion
  * Unexpected termination
  * No minification possible
  * Less readable code
+
+This will not work as expected:
 
     function laugh()
     {
