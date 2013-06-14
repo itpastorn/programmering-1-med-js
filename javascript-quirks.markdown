@@ -137,7 +137,7 @@ Conversions may produce `NaN` (see below)
 Beware of octals (common in dates)
 
 
-## Quirk #n: Comparisons == ##
+## Quirk #n: Comparisons using == ##
 
 When comparing two values with == (2 equals signs) *type conversion* will happen, but in quite erratic ways.
 
@@ -145,7 +145,7 @@ When comparing two values with == (2 equals signs) *type conversion* will happen
     0 == ''            // true - type conversion occured
     0 == '0'           // true - no transitivity!
 
-The problem is that it is nigh impossible to account for all the different possible type conversion possibilities.
+The problem is that it is nigh impossible to account for all the different type conversion possibilities.
 
 
 If you are used to PHP, JavaScript is really tricky. PHP has more sane conversion rules and the double equality comparison (usually) works as expected.
