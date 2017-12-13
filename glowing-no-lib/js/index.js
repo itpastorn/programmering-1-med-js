@@ -45,7 +45,8 @@
         // Gå ett slumpmässigt antal grader framåt i färghjulet
         hue += 10 * Math.random();
         context.strokeStyle = 'hsl(' + hue + ', 50%, 50%)';
-        // Uppgift (längre fram) - flytta ut shadowColor och ShadowBlur eftersom de aldrig ändras
+        // Uppgift (längre fram) - flytta ut shadowColor och ShadowBlur
+        // eftersom de aldrig ändras
         // Glödande kantlinje på kurvan
         context.shadowColor = 'white';
         context.shadowBlur  = 10;
@@ -59,7 +60,8 @@
     // Första anropet av funktionen
     line(firstX, firstY, initHue);
 
-    // Skapa en helsvart men mycket transparent "hinna" som läggs överst, men gradvis flyttas bakåt
+    // Skapa en helsvart men mycket transparent "hinna" som läggs överst,
+    // men gradvis flyttas bakåt
     function blank() {
         // Svart med 90 % genomskinlighet
         context.fillStyle = 'rgba(0, 0, 0, 0.1)';
